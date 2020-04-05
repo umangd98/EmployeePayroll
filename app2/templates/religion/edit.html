@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="/update/{{ religion2.RELIGION_NO }}" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register</div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+
+                        <div class="form-group clearfix">
+                            <label for="{{ form.username.id_for_label }}" class="col-md-4 control-label text-right">RELIGION NUMBER<span class="text-red">*</span>:</label>
+                            <!-- <div class="col-md-6">
+                                {{ religion2.RELIGION_NO }}
+                           </div> -->
+                           <input type="text" name="A" value="{{ religion2.RELIGION_NO }}">
+                        </div>
+                         <div class="form-group clearfix">
+                            <label for="{{ form.email.id_for_label }}" class="col-md-4 control-label text-right">RELIGION<span class="text-red">*</span>:</label>
+                            <!-- <div class="col-md-6">
+                                {{ religion2.RELIGION_NAME }}
+                            </div> -->
+                            <input type="text" name="B" value="{{ religion2.RELIGION_NAME }}">
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="update" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

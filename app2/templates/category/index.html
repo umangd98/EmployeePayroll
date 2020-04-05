@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+          <th>Category Number</th>
+          <th>CATEGORY</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in category1 %}
+        <tr>
+          <td>{{p.CATEGORY_NO}}</td>
+            <td>{{p.CATEGORY_NAME}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+          <th>Religion Number</th>
+          <th>RELIGION</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in religion1 %}
+        <tr>
+          <td>{{p.RELIGION_NO}}</td>
+            <td>{{p.RELIGION_NAME}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

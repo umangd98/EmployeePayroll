@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="/category" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register</div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+
+                        <div class="form-group clearfix">
+                            <label for="{{ form.username.id_for_label }}" class="col-md-4 control-label text-right">CATEGORY NUMBER<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.CATEGORY_NO }}
+                           </div>
+                        </div>
+                         <div class="form-group clearfix">
+                            <label for="{{ form.email.id_for_label }}" class="col-md-4 control-label text-right">CATEGORY<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.CATEGORY_NAME }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="Register" class="btn btn-success">
+                        </div>
+
+                        <table class="table table-striped table-bordered table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                  <th>select</th>
+                                  <th>CATEGORY Number</th>
+                                  <th>CATEGORY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in category1 %}
+                                <tr>
+                                <!-- <td>  <input type="radio" name="choice" class="form-check-input" id="p{{forloop.counter}}" value="{{ p.CATEGORY_NO }}">
+                                  </td> -->
+                                   <td>{{p.CATEGORY_NO}}</td>
+                                    <td >{{p.CATEGORY_NAME}}</td>
+                                    <td>
+                                    <a href="/{{ p.id }}/update_category" class="btn btn-primary btn-sm">Modify</a>
+                                    <a href="/delete_category/{{ p.id }}" class="btn btn-primary btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

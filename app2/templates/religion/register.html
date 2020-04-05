@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="/religion" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register</div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+
+                        <div class="form-group clearfix">
+                            <label for="{{ form.username.id_for_label }}" class="col-md-4 control-label text-right">RELIGION NUMBER<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.RELIGION_NO }}
+                           </div>
+                        </div>
+                         <div class="form-group clearfix">
+                            <label for="{{ form.email.id_for_label }}" class="col-md-4 control-label text-right">RELIGION<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.RELIGION_NAME }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="Register" class="btn btn-success">
+                        </div>
+
+                        <table class="table table-striped table-bordered table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                  <th>select</th>
+                                  <th>Religion Number</th>
+                                  <th>RELIGION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in religion1 %}
+                                <tr>
+                                <td>  <input type="radio" name="choice" class="form-check-input" id="p{{forloop.counter}}" value="{{ p.RELIGION_NO }}">
+                                  </td>
+                                   <td>{{p.RELIGION_NO}}</td>
+                                    <td >{{p.RELIGION_NAME}}</td>
+                                    <td>
+                                    <a href="/{{ p.id }}/update" class="btn btn-primary btn-sm">Modify</a>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+          <th>Title Number</th>
+          <th>TITLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in title1 %}
+        <tr>
+          <td>{{p.TITLE_NO}}</td>
+            <td>{{p.TITLE_NAME}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
