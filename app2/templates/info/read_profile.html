@@ -6,7 +6,6 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
         <style>
         .carousel-control.left, .carousel-control.right {
            background-image:none !important;
@@ -524,6 +523,12 @@
      <input type="text" name="REMARK" maxlength="50" id="id_REMARK" value="{{obj.REMARK}}" disabled>
                                   </div>
                               </div>
+
+                             <!-- <div class="col-md-7 inputGroupContainer">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                                    <button onclick="myFunction()">Print this page</button>
+                             </div>-->
+                         </div>
                           </div>
                        </fieldset>
                     </div>
@@ -542,6 +547,7 @@
   <!-- Copyright -->
   <div style="color: white;" class="footer-copyright text-center py-10">2021 Batch Copyright:
     <a href="https://vnit.ac.in"> VNIT Portal</a>
+    <button onclick="myFunction()">Print this page</button>
   </div>
   <!-- Copyright -->
 
@@ -577,5 +583,10 @@
         //  dots[slideIndex-1].className += " active";
         }    
     </script>
+    <script>    
+        function myFunction() {
+      window.print();
+    }
+        </script>
 </body>
 </html>
