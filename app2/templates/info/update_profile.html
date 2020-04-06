@@ -98,8 +98,7 @@
                 </div>
                 
     <form action="/updatetemp" method="post">
-        <input class="form-control" type="hidden" name="csrfmiddlewaretoken" value="KsKS5dSwxdb6gVwYtHzmRqXJYFlJbYu1yV3uWHglCoeW0ru8Ennzen0BwasXMaOs">
-
+        {% csrf_token %}
         <div>
             {{messages}}
         </div>
