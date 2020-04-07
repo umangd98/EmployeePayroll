@@ -214,8 +214,121 @@ class InstallmentType(models.Model):
     class Meta:
         db_table = "INSTALLMENT"
 
-class Designature(models.Model):
-    DESIGNATURE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
-    DESIGNATURE_NAME = models.CharField(max_length=20,null=True, blank=True)
+class Designature(models.Model):    # fields of table designature
+    DESIGNATURE_NO = models.IntegerField(default=None,null=True, blank=True)    #no
+    DESIGNATURE_NAME = models.CharField(max_length=20,null=True, blank=True)    #name
     class Meta:
         db_table = "DESIGNATURE"
+   
+class Designation_Nature(models.Model):  # fields of table design nature
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "DESIGNATION_NATURE"
+    def __str__(self):
+        return self.NAME
+
+class Under(models.Model):   # fields of table under
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "UNDER"
+    def __str__(self):
+        return self.NAME
+
+class Vacational(models.Model): # fields of table vacational
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "VACATIONAL"
+    def __str__(self):
+        return self.NAME
+
+class Bank_Name(models.Model):   # fields of table bank name
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "BANK_NAME"
+    def __str__(self):
+        return self.NAME
+
+class Level(models.Model):   # fields of table rule
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "LEVEL"
+    def __str__(self):
+        return self.NAME
+
+class Rule(models.Model):    # fields of table rule
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "RULE"
+    def __str__(self):
+        return self.NAME
+
+
+class Gender(models.Model): # fields of table gender
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "GENDER"
+    def __str__(self):
+        return self.NAME
+
+class EmployeeInformation(models.Model):     # fields of table employee information
+
+    BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
+
+
+    id_number_regex = RegexValidator(regex=r'^\d{5}$', message="INVALID ID NUMBER")
+    ID_NUMBER = models.CharField(max_length=50,null=True, blank=True, unique=True)
+
+    sequnce_number_regex = RegexValidator(regex=r'^\d{10}$', message="INVALID SEQUENCE NUMBER")
+    SEQUENCE_NUMBER = models.CharField(max_length=50,null=True, blank=True)
+
+
+    TITLE = models.CharField(max_length=50,null=True, blank=True)
+    FIRST_NAME = models.CharField(max_length=50,null=True, blank=True)
+    MIDDLE_NAME = models.CharField(max_length=50,null=True, blank=True)
+    LAST_NAME = models.CharField(max_length=50,null=True, blank=True)
+    FATHER_NAME = models.CharField(max_length=50,null=True, blank=True)
+
+    INCREMENT_DATE = models.DateField()
+    DATE_OF_BIRTH = models.DateField()
+    DATE_OF_JOINING = models.DateField()
+    DATE_OF_RETIREMENT = models.DateField()
+    DESIGNATION_NAME = models.CharField(max_length=50,null=True, blank=True)
+
+    GENDER= models.CharField(max_length=50,null=True, blank=True)
+    TA = models.BooleanField(null=True, blank=True, default=False, choices=BOOL_CHOICES)
+    PT = models.BooleanField(max_length=10,null=True, blank=True, default=True, choices=BOOL_CHOICES)
+    QUARTER = models.BooleanField(null=True, blank=True, default=True, choices=BOOL_CHOICES)
+    RENT_FREE = models.BooleanField(null=True, blank=True, default=True, choices=BOOL_CHOICES)
+    QUARTER_ADDRESS = models.CharField(max_length=50,null=True, blank=True)
+    HANDICAP = models.BooleanField(null=True, blank=True, default=True, choices=BOOL_CHOICES)
+    SENIOR_CITIZEN = models.BooleanField(null=True, blank=True, default=True, choices=BOOL_CHOICES)
+    
+    
+    DESIGNATION = models.CharField(max_length=50,null=True, blank=True)
+    DEPARTMENT = models.CharField(max_length=50,null=True, blank=True)
+    STAFF_TYPE = models.CharField(max_length=50,null=True, blank=True)
+    APPOINTMENT = models.CharField(max_length=50,null=True, blank=True)
+    VACATIONAL = models.CharField(max_length=50,null=True, blank=True)
+    BANK_NAME = models.CharField(max_length=50,null=True, blank=True)
+
+    account_number_regex = RegexValidator(regex=r'^\d{9,18}$', message="INVALID ACCOUNT NUMBER")
+    BANK_ACCOUNT_NUMBER= models.CharField(validators=[account_number_regex], max_length=50, blank=True)
+    pf_regex = RegexValidator(regex=r'^[A-Z]{2}/[A-Z]{3}/\d{5}/\d{3}/\d{7}$', message="INVALID PF NUMBER")
+    PF_NUMBER = models.CharField(validators=[pf_regex], max_length=50, blank=True, unique=True)
+    pran_regex = RegexValidator(regex=r'^\d{12,12}$', message="INVALID PF NUMBER")
+    PRAN_NUMBER = models.CharField(validators=[pran_regex], max_length=50, blank=True, unique=True)
+    pan_regex = RegexValidator(regex=r'^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$', message="INVALID PAN NUMBER")
+    PAN_NUMBER = models.CharField(validators=[pan_regex], max_length=50,blank=True, unique=True)
+    UNDER = models.CharField(max_length=50,null=True, blank=True)
+
+
+    LEVEL = models.CharField(max_length=50,null=True, blank=True)
+    BASIC = models.IntegerField()
+    PAY_STATUS = models.BooleanField(null=True, blank=True, default=False, choices=BOOL_CHOICES)
+    RULE = models.CharField(max_length=50,null=True, blank=True)
+
+
+    REMARK = models.CharField(max_length=50,null=True, blank=True)
+
+    class Meta:
+        db_table = "EmployeeInformation"
