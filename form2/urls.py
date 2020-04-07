@@ -98,4 +98,13 @@ urlpatterns = [
     path('designature', views.DesignatureCreateView.as_view()),
     path('show_designature', views.DesignatureListView.as_view()),
     
+    #crud operations
+    path('crud_create',views.crud_create),
+    path('createtemp',views.crud_create),
+    path('crud_read',views.crud_read),
+    path('readtemp',views.crud_read),
+    path('crud_update',views.ask_id_for_update),
+    path('updateinfotemp',views.ask_id_for_update),
+    path('updatetemp',views.crud_update),
+    
 ]
