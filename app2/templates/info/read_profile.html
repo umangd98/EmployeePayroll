@@ -7,6 +7,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <style>
+            .container{
+             width: 85%;   
+            }
+            
         .carousel-control.left, .carousel-control.right {
            background-image:none !important;
            filter:none !important;
@@ -23,6 +27,10 @@
   box-sizing: border-box;
 }
 
+            body{
+                padding-bottom: 20px;
+                
+            }
 
         .spacing{
             margin: 6px
@@ -72,6 +80,9 @@
 
   <!-- Links -->
   <ul class="navbar-nav">
+      <a class="navbar-brand" href="#">
+    <img src="vnit.png" alt="logo" style="width:40px;">
+  </a>
     <li class="nav-item">
       <a class="nav-link" href="#">Home</a>
     </li>
@@ -529,8 +540,9 @@
                                     <button onclick="myFunction()">Print this page</button>
                              </div>-->
                          </div>
-                          </div>
+                          
                        </fieldset>
+                    
                     </div>
                  </td>
               </tr>
@@ -539,22 +551,31 @@
         </div>
         
         
-        
+        <button class="btn btn-info" style="float: right" onclick="myFunction()">Print this page</button>
+            <br>
+            <br>
     
     </form>
-                <footer class="page-footer font-small black">
-
-  <!-- Copyright -->
-  <div style="color: white;" class="footer-copyright text-center py-10">2021 Batch Copyright:
-    <a href="https://vnit.ac.in"> VNIT Portal</a>
-    <button onclick="myFunction()">Print this page</button>
-  </div>
-  <!-- Copyright -->
-
-</footer>
+                
                 
         </div>
+            </div>
+            <br>
+            <footer class="page-footer font-small black">
 
+              <!-- Copyright -->
+              <div style="color: white;" class="footer-copyright text-center py-10">2021 Batch Copyright:
+                <a href="https://vnit.ac.in"> VNIT Portal</a>
+            <!--    <button onclick="myFunction()">Print this page</button>-->
+              </div>
+              <!-- Copyright -->
+
+            </footer>
+          
+        </div>
+        
+                
+      
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
