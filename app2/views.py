@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from app2.forms import *
 from app2.models import *
 
-from django.http import *
 # def religion(request):
 #     if request.method == "POST":
 #       form1= ReligionForm(request.POST)
@@ -371,156 +370,92 @@ class UnderCollegeListView(ListView):
     # specify the model for list view
     model = UnderCollege
 
+class BankCreateView(CreateView):
+    # specify the model you want to use
+    model = Bank
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_bank"
 
+class BankListView(ListView):
 
+    # specify the model for list view
+    model = Bank
 
+class CityCreateView(CreateView):
+    # specify the model you want to use
+    model = City
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_city"
 
+class CityListView(ListView):
 
+    # specify the model for list view
+    model = City
 
+class SubDeptCreateView(CreateView):
+    # specify the model you want to use
+    model = SubDept
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdept"
 
+class SubDeptListView(ListView):
 
+    # specify the model for list view
+    model = SubDept
 
+class InstallCreateView(CreateView):
+    # specify the model you want to use
+    model = InstallmentType
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_install"
 
+class InstallListView(ListView):
 
-#crud operations
+    # specify the model for list view
+    model = InstallmentType
 
-#create profile (http://127.0.0.1:8000/crud_create)
-def crud_create(request):
-    if request.method == 'POST':
-        #validate and save the created profile
-        form = EmployeeInformationForm(request.POST)
-        print(request.POST)
-        if form.is_valid():
-            print("111111111111111111111111111")
-            #valid form ,therefore save it in database
-            #WRITE A FUNCTION TO GENERATE ID AND SEQUENCE NUMBER
-            #form.instance.ID_NUMBER='11111'
-            form.save()
-            return HttpResponse("PROFILE CREATED")
+class SUBDESIGCreateView(CreateView):
+    # specify the model you want to use
+    model = SubDesignation
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdesig"
 
-        else:
-            #invalid form(user is redirected to create_profile.html form and displayed the relevant erors) 
-            title=Title.objects.all()
-            designation_nature=Designation_Nature.objects.all()
-            under=Under.objects.all()
-            designation=MainDesignation.objects.all()
-            department=MainDept.objects.all()
-            staff_type=StaffType.objects.all()
-            appointment=Appointment.objects.all()
-            vacational=Vacational.objects.all()
-            bank_name=Bank_Name.objects.all()
-            level=Level.objects.all()
-            rule=Rule.objects.all()
-            gender=Gender.objects.all()
-            return render(request,'info/create_profile.html',{'title':title ,'designation_nature':designation_nature ,'under':under , 'designation':designation ,
-            'department':department , 'staff_type':staff_type ,'appointment':appointment ,'vacational':vacational ,'bank_name':bank_name ,
-            'level':level ,'rule':rule ,'gender':gender ,'messages':form.errors})
+class SUBDESIGListView(ListView):
 
-    else:
-        #enter details of the profile to create
-        title=Title.objects.all()
-        designation_nature=Designation_Nature.objects.all()
-        under=Under.objects.all()
-        designation=MainDesignation.objects.all()
-        department=MainDept.objects.all()
-        staff_type=StaffType.objects.all()
-        appointment=Appointment.objects.all()
-        vacational=Vacational.objects.all()
-        bank_name=Bank_Name.objects.all()
-        level=Level.objects.all()
-        rule=Rule.objects.all()
-        gender=Gender.objects.all()
-        messages=''
-        return render(request,'info/create_profile.html',{'title':title ,'designation_nature':designation_nature ,'under':under , 'designation':designation ,
-        'department':department , 'staff_type':staff_type ,'appointment':appointment ,'vacational':vacational ,'bank_name':bank_name ,
-        'level':level ,'rule':rule ,'gender':gender,'messages':messages })
+    # specify the model for list view
+    model = SubDesignation
 
+class DesignatureCreateView(CreateView):
+    # specify the model you want to use
+    model = Designature
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_designature"
 
-#read profile (http://127.0.0.1:8000/crud_read)
-def crud_read(request):
-    if request.method=='POST':
-        #verify the id of profile and display the relevant information of the profile
-        id=request.POST['ID_NUMBER']
-        try:
-            obj= EmployeeInformation.objects.get(ID_NUMBER=id)
-            if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
-                return HttpResponse("object not found")
-                
-        except EmployeeInformation.DoesNotExist:
-            return HttpResponse("Object does not exist")
-       
-        return render(request, 'info/read_profile.html', { 'obj': obj })
+class DesignatureListView(ListView):
 
-
-    else:
-        #acccept id of profile to read
-        return render(request,'info/ask_id_for_read.html')
-
-
-#update profile (http://127.0.0.1:8000/crud_update)
-def ask_id_for_update(request):
-    print("11111111111111111111111111111")
-    if request.method=='POST':
-        print("222222222222222222222222222")
-        #verify the id of profile and display the relevant information of the profile
-        id=request.POST['ID_NUMBER']
-        try:
-            obj= EmployeeInformation.objects.get(ID_NUMBER=id)
-            if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
-                return HttpResponse("object not found")
-                
-        except EmployeeInformation.DoesNotExist:
-            return HttpResponse("Object does not exist")
-        
-        #id is correct , therefore display details of profile as default and editable
-        title=Title.objects.all()
-        designation_nature=Designation_Nature.objects.all()
-        under=Under.objects.all()
-        designation=MainDesignation.objects.all()
-        department=MainDept.objects.all()
-        staff_type=StaffType.objects.all()
-        appointment=Appointment.objects.all()
-        vacational=Vacational.objects.all()
-        bank_name=Bank_Name.objects.all()
-        level=Level.objects.all()
-        rule=Rule.objects.all()
-        gender=Gender.objects.all()
-        messages=''
-        return render(request, 'info/update_profile.html', { 'obj': obj ,'title':title ,'designation_nature':designation_nature ,'under':under , 'designation':designation ,
-        'department':department , 'staff_type':staff_type ,'appointment':appointment ,'vacational':vacational ,'bank_name':bank_name ,
-        'level':level ,'rule':rule ,'gender':gender,'messages':messages})
-
-    else:
-        print("333333333333333333333333333333")
-        #acccept id of profile to update
-        return render(request,'info/ask_id_for_update.html')
-
-
-#update profile(called from form )
-#CANNOT ACCESS DIRECTLY FROM URL   
-def crud_update(request):
-    
-    if request.method == 'POST':
-        
-        #check if updated profile is valid and update accordingly
-        id=request.POST['ID_NUMBER']
-        try:
-            
-            obj= EmployeeInformation.objects.filter(ID_NUMBER=id).get()
-            
-            if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
-                 return HttpResponse("object not found")
-
-            
-            form = EmployeeInformationForm(request.POST, instance=obj)
-
-            if form.is_valid():   
-                form.save()
-                return HttpResponse("data saved")
-
-            else:
-                print(form.errors)
-                return HttpResponse("not updated")
-                
-        except EmployeeInformation.DoesNotExist:
-            return HttpResponse("Object does not exist")
+    # specify the model for list view
+    model = Designature
