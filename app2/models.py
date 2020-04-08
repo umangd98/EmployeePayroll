@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import RegexValidator
 class MainDept(models.Model):
     DEPT_NO = models.IntegerField(default=None, blank=True,primary_key=True)
     DEPT_NAME = models.CharField(max_length=20,null=True, blank=True)
@@ -16,7 +16,8 @@ class SubDept(models.Model):
         db_table = "SUBDEPT"
 
 class MainDesignation(models.Model):
-    DESIG_NAME = models.CharField(default=None,max_length=50,blank=True,primary_key=True)
+    DESIG_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    DESIG_NAME = models.CharField(default=None,max_length=50,blank=True)
     SDESIG = models.CharField(max_length=10,null=True, blank=True)
     def __str__(self):
         return self.DESIG_NAME
@@ -28,7 +29,7 @@ class SubDesignation(models.Model):
     SUBDESIG_NO = models.IntegerField(default=None, blank=True,primary_key=True)
     SUBDESIG_NAME = models.CharField(max_length=50,null=True, blank=True)
     SUBDESIG = models.CharField(max_length=8,null=True, blank=True)
-    DESIG_NAME = models.ForeignKey(MainDesignation,default=1,on_delete=models.CASCADE)
+    DESIG_NO = models.ForeignKey(MainDesignation,default=1,on_delete=models.CASCADE)
     class Meta:
         db_table = "SUBDESIG"
 
@@ -193,14 +194,14 @@ class InstallmentType(models.Model):
     TOTAMT = models.IntegerField(default=None,null=True, blank=True)
     REM = models.CharField(max_length=200,null=True, blank=True)
     STOP = models.IntegerField(default=None,null=True, blank=True)
-    EXPDT = models.DateTimeField(auto_now_add=True)
+    EXPDT = models.DateTimeField(auto_now_add=True, blank=True)
     PAIDNO = models.IntegerField(default=None,null=True, blank=True)
     MON = models.CharField(max_length=7,null=True, blank=True)
     NEW = models.IntegerField(default=None,null=True, blank=True)
     REF_NO = models.CharField(max_length=35,null=True, blank=True)
     DESP_NO = models.CharField(max_length=35,null=True, blank=True)
-    DESP_DT  = models.DateTimeField(auto_now_add=True)
-    START_DT = models.DateTimeField(auto_now_add=True)
+    DESP_DT  = models.DateTimeField(auto_now_add=True,blank=True)
+    START_DT = models.DateTimeField(auto_now_add=True,blank=True)
     DEFA_AMT = models.IntegerField(default=None,null=True, blank=True)
     PRO_AMT = models.IntegerField(default=None,null=True, blank=True)
     CODE = models.CharField(max_length=20,null=True, blank=True)
