@@ -23,76 +23,81 @@ urlpatterns = [
 #     path('show_religion',views.show_religion),
 #     path('edit/<int:id>',views.edit),
 #     path('update/<int:id>',views.modify_religion),
-    
     # path('religion/create',views.Create.as_view(),name='create_religion'),
     path('admin/', admin.site.urls),
-    
     #religion
-    path('religion',views.religion),    #main religion form
-    path('show_religion',views.show_religion),  #show religions
-    path('delete/<int:id>',views.delete_religion),  #delete religion
-    path('<pk>/update', views.ReligionUpdateView.as_view()),    #update religion
+    path('religion',views.religion),
+    path('show_religion',views.show_religion),
+    path('delete/<int:id>',views.delete_religion),
+    path('<pk>/update', views.ReligionUpdateView.as_view()),
     re_path(r'^\d+/religion',views.religion),
-    
     #title
-    path('title',views.title),  #main title form
-    path('show_title',views.show_title),    #show title
-    path('delete_title/<int:id>',views.delete_title),   #delete title
-    path('<pk>/update_title', views.TitleUpdateView.as_view()), #update title
+    path('title',views.title),
+    path('show_title',views.show_title),
+    path('delete_title/<int:id>',views.delete_title),
+    path('<pk>/update_title', views.TitleUpdateView.as_view()),
     re_path(r'^\d+/title',views.title),
-    
     #caste
-    path('caste',views.CasteCreateView.as_view()),  #main caste
-    path('show_caste',views.CasteUpdateView.as_view()), #show caste
-    path('<pk>/update_caste', views.CasteUpdateView.as_view()), #delete caste
+    path('caste',views.CasteCreateView.as_view()),
+    path('show_caste',views.CasteUpdateView.as_view()),
+    path('<pk>/update_caste', views.CasteUpdateView.as_view()),
     # re_path(r'^\d+/caste',views.caste),
-    path('delete_caste/<int:id>',views.delete_caste),   #update caste
-    
+    path('delete_caste/<int:id>',views.delete_caste),
     #category
-    path('category',views.category),    #main category
-    path('show_category',views.show_category),  #show category
-    path('<pk>/update_category', views.CategoryUpdateView.as_view()),   #update category
+    path('category',views.category),
+    path('show_category',views.show_category),
+    path('<pk>/update_category', views.CategoryUpdateView.as_view()),
     re_path(r'^\d+/category',views.category),
-    path('delete_category/<int:id>',views.delete_category), #delete category
-    
+    path('delete_category/<int:id>',views.delete_category),
     #suplhead
-    path('suplhead',views.suplhead),    #main suplhead
+    path('suplhead',views.suplhead),
     path('<pk>/suplhead', views.SuplHeadUpdateView.as_view()),
     re_path(r'^\d+/suplhead',views.suplhead),
-    path('delete_suplhead/<int:id>',views.delete_suplhead), #delete suplhead
+    path('delete_suplhead/<int:id>',views.delete_suplhead),
 
-    #main dept
-    path('MainDept', views.MainDept_create.as_view()),  #main dept
-    path('MainDeptShowView', views.MainDeptShowView.as_view()),     #show dept
+    path('MainDept', views.MainDept_create.as_view()),
+    path('MainDeptShowView', views.MainDeptShowView.as_view()),
     # path('<pk>/MainDeptUpdateView', views.MainDeptUpdateView.as_view()),
 
-    #main designation
-    path('MainDesignation', views.MainDesignation_create.as_view()),    #main designature
-    path('MainDesignationShowView', views.MainDesignationShowView.as_view()),   #show designature
+    path('MainDesignation', views.MainDesignation_create.as_view()),
+    path('MainDesignationShowView', views.MainDesignationShowView.as_view()),
     # path('<pk>/MainDeptUpdateView', views.MainDeptUpdateView.as_view()),
 
-    #staff
-    path('Staff', views.Staff_create.as_view()),    #main staff
-    path('StaffShowView', views.StaffShowView.as_view()),   #show staff
+    path('Staff', views.Staff_create.as_view()),
+    path('StaffShowView', views.StaffShowView.as_view()),
     # path('<pk>/MainDeptUpdateView', views.MainDeptUpdateView.as_view()),
 
-    #scale
-    path('Scale', views.Scale_create.as_view()),    #main scale
-    path('ScaleShowView', views.ScaleShowView.as_view()),   #show scale
+    path('Scale', views.Scale_create.as_view()),
+    path('ScaleShowView', views.ScaleShowView.as_view()),
     # path('<pk>/MainDeptUpdateView', views.MainDeptUpdateView.as_view()),
-     
      #typetran
-    path('typetran', views.TypeTranCreateView.as_view()),   #mmain typetran
-    path('show_typetran', views.TypeTranListView.as_view()),    #show type tran
-    
+    path('typetran', views.TypeTranCreateView.as_view()),
+    path('show_typetran', views.TypeTranListView.as_view()),
     #appointment
-    path('appointment', views.AppointmentCreateView.as_view()), #main appointment
-    path('show_appointment', views.AppointmentListView.as_view()),  #show appointment
-    
+    path('appointment', views.AppointmentCreateView.as_view()),
+    path('show_appointment', views.AppointmentListView.as_view()),
     #undercollege
-    path('undercollege', views.UnderCollegeCreateView.as_view()),   #main under college
-    path('show_undercollege', views.UnderCollegeListView.as_view()),    #show college
-
+    path('undercollege', views.UnderCollegeCreateView.as_view()),
+    path('show_undercollege', views.UnderCollegeListView.as_view()),
+        #bank
+    path('bank', views.BankCreateView.as_view()),
+    path('show_bank', views.BankListView.as_view()),
+    #city
+    path('city', views.CityCreateView.as_view()),
+    path('show_city', views.CityListView.as_view()),
+    #Subdept
+    path('subdept', views.SubDeptCreateView.as_view()),
+    path('show_subdept', views.SubDeptListView.as_view()),
+    #InstallmentType
+    path('install', views.InstallCreateView.as_view()),
+    path('show_install', views.InstallListView.as_view()),
+    #SubDesignation
+    path('subdesig', views.SUBDESIGCreateView.as_view()),
+    path('show_subdesig', views.SUBDESIGListView.as_view()),
+    #Designature
+    path('designature', views.DesignatureCreateView.as_view()),
+    path('show_designature', views.DesignatureListView.as_view()),
+    
     #crud operations
     path('crud_create',views.crud_create),
     path('createtemp',views.crud_create),
@@ -101,9 +106,5 @@ urlpatterns = [
     path('crud_update',views.ask_id_for_update),
     path('updateinfotemp',views.ask_id_for_update),
     path('updatetemp',views.crud_update),
-
-
-
-
+    
 ]
-

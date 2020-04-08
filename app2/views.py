@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from app2.forms import *
 from app2.models import *
 
-from django.http import *
 # def religion(request):
 #     if request.method == "POST":
 #       form1= ReligionForm(request.POST)
@@ -371,15 +370,98 @@ class UnderCollegeListView(ListView):
     # specify the model for list view
     model = UnderCollege
 
+class BankCreateView(CreateView):
+    # specify the model you want to use
+    model = Bank
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_bank"
 
+class BankListView(ListView):
 
+    # specify the model for list view
+    model = Bank
 
+class CityCreateView(CreateView):
+    # specify the model you want to use
+    model = City
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_city"
 
+class CityListView(ListView):
 
+    # specify the model for list view
+    model = City
 
+class SubDeptCreateView(CreateView):
+    # specify the model you want to use
+    model = SubDept
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdept"
 
+class SubDeptListView(ListView):
 
+    # specify the model for list view
+    model = SubDept
 
+class InstallCreateView(CreateView):
+    # specify the model you want to use
+    model = InstallmentType
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_install"
+
+class InstallListView(ListView):
+
+    # specify the model for list view
+    model = InstallmentType
+
+class SUBDESIGCreateView(CreateView):
+    # specify the model you want to use
+    model = SubDesignation
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdesig"
+
+class SUBDESIGListView(ListView):
+
+    # specify the model for list view
+    model = SubDesignation
+
+class DesignatureCreateView(CreateView):
+    # specify the model you want to use
+    model = Designature
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_designature"
+
+class DesignatureListView(ListView):
+
+    # specify the model for list view
+    model = Designature
+    
+    
+ 
 
 
 #crud operations
