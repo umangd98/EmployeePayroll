@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% load static %}
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +84,7 @@
   
   <ul class="navbar-nav">
       <a class="navbar-brand" href="#">
-    <img src="vnit.png" alt="logo" style="width:40px;">
+    <img src="{% static 'img/vnitlogo.png' %}" alt="logo" style="width:40px;">
   </a>
     <li class="nav-item">
       <a class="nav-link" href="#">Home</a>
