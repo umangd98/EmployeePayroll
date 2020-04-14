@@ -44,8 +44,9 @@
                                    <td>{{p.TITLE_NO}}</td>
                                     <td >{{p.TITLE_NAME}}</td>
                                     <td>
-                                    <a href="/{{ p.id }}/update_title" class="btn btn-primary btn-sm">Modify</a>
-                                    <a href="/delete_title/{{ p.id }}" class="btn btn-primary btn-sm">Delete</a>
+                                    {% comment %} <a href="/{{ p.id }}/update_title"  class="btn btn-primary btn-sm">Modify</a> {% endcomment %}
+                                    <a href="{% url 'title_update' p.TITLE_NO %}"class="btn btn-primary btn-sm" >Modify</a>
+                                    <a href="/delete_title/{{ p.TITLE_NO }}" class="btn btn-primary btn-sm">Delete</a>
                                     </td>
                                 </tr>
 

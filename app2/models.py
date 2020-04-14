@@ -1,9 +1,12 @@
 from django.db import models
 from django.core.validators import RegexValidator
+
 class MainDept(models.Model):
     DEPT_NO = models.IntegerField(default=None, blank=True,primary_key=True)
     DEPT_NAME = models.CharField(max_length=20,null=True, blank=True)
     SDEPT = models.CharField(max_length=10,null=True, blank=True)
+    def __str__(self):
+        return self.DEPT_NAME
     class Meta:
         db_table = "DEPARTMENT"
 
@@ -17,7 +20,7 @@ class SubDept(models.Model):
 
 class MainDesignation(models.Model):
     DESIG_NO = models.IntegerField(default=None, blank=True,primary_key=True)
-    DESIG_NAME = models.CharField(default=None,max_length=50,blank=True)
+    DESIG_NAME =models.CharField(max_length=20,null=True, blank=True)
     SDESIG = models.CharField(max_length=10,null=True, blank=True)
     def __str__(self):
         return self.DESIG_NAME
@@ -194,14 +197,14 @@ class InstallmentType(models.Model):
     TOTAMT = models.IntegerField(default=None,null=True, blank=True)
     REM = models.CharField(max_length=200,null=True, blank=True)
     STOP = models.IntegerField(default=None,null=True, blank=True)
-    EXPDT = models.DateTimeField(auto_now_add=True, blank=True)
+    EXPDT = models.DateTimeField(auto_now_add=True)
     PAIDNO = models.IntegerField(default=None,null=True, blank=True)
     MON = models.CharField(max_length=7,null=True, blank=True)
     NEW = models.IntegerField(default=None,null=True, blank=True)
     REF_NO = models.CharField(max_length=35,null=True, blank=True)
     DESP_NO = models.CharField(max_length=35,null=True, blank=True)
-    DESP_DT  = models.DateTimeField(auto_now_add=True,blank=True)
-    START_DT = models.DateTimeField(auto_now_add=True,blank=True)
+    DESP_DT  = models.DateTimeField(auto_now_add=True)
+    START_DT = models.DateTimeField(auto_now_add=True)
     DEFA_AMT = models.IntegerField(default=None,null=True, blank=True)
     PRO_AMT = models.IntegerField(default=None,null=True, blank=True)
     CODE = models.CharField(max_length=20,null=True, blank=True)
@@ -215,12 +218,19 @@ class InstallmentType(models.Model):
     class Meta:
         db_table = "INSTALLMENT"
 
-class Designature(models.Model):    # fields of table designature
-    DESIGNATURE_NO = models.IntegerField(default=None,null=True, blank=True)    #no
-    DESIGNATURE_NAME = models.CharField(max_length=20,null=True, blank=True)    #name
+class Designature(models.Model):
+    DESIGNATURE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    DESIGNATURE_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "DESIGNATURE"
-   
+
+
+
+#crud operations : vaibhav
+#do not edit
+
+
+
 class Designation_Nature(models.Model):  # fields of table design nature
     NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
     class Meta:
@@ -235,6 +245,36 @@ class Under(models.Model):   # fields of table under
     def __str__(self):
         return self.NAME
 
+'''
+class Designation(models.Model):
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "DESIGNATION1"
+    def __str__(self):
+        return self.NAME
+
+class Department(models.Model):
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "DEPARTMENT1"
+    def __str__(self):
+        return self.NAME
+
+
+class Staff_Type(models.Model):
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "STAFF_TYPE"
+    def __str__(self):
+        return self.NAME
+
+class Appointment(models.Model):
+    NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
+    class Meta:
+        db_table = "APPOINTMENT"
+    def __str__(self):
+        return self.NAME
+'''
 class Vacational(models.Model): # fields of table vacational
     NAME = models.CharField(max_length=20,null=True, blank=True, unique=True)
     class Meta:

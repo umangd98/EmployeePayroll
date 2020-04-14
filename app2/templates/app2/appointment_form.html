@@ -1,10 +1,149 @@
-{% extends "base.html" %}
+<html>
+    
+<head>
+  <title>Employee Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <style>
+        .carousel-control.left, .carousel-control.right {
+           background-image:none !important;
+           filter:none !important;
+        }
+        .center{
+          margin: auto;
+        }
+        .jumbotron{
+         width:60%;
+         height:60%;
+        }
+        
+        .btun button{
+            margin-bottom: 5px;
+        }
+        #myCarousel{
+            max-height: 350px;
+            overflow-y: scroll;
+        }
+        .form-group{
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        .row{
+            padding: 1px;
+        }
+        .container{
+            width: 80%;
+        }
+        #myCarousel{
+            font-size: 20px;
+        }
+        .ex{
+            width: 13%;
+        }
+    </style>
+</head>
+    <body>
+        
+        <div class="container">
+            <br>
+            <h1 style="text-align: center">Appointment Form</h1>
+            <br>
+            <br>
+            <form method="POST">
+            <div id="myCarousel" class="carousel slide">
+                
+    
+                <div class="carousel-inner">
+        
+        
 
-{% block content %}
-<form method="post">
+    <div class="item">
+    <!-- Security token -->
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
 
-{% endblock %}
+    
+<div class="form-group row"><label class="col-md-4 control-label"for="id_APPOINT_NO">APPOINT NO:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> 
+    
+    <!-- <input class="form-control" type="number" name="APPOINT_NO" id="id_APPOINT_NO">   -->
+    {{form.APPOINT_NO}}
+
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_APPOINT_NAME">APPOINT NAME:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> 
+    
+    <!-- <input class="form-control" type="text" name="APPOINT_NAME" maxlength="25" id="id_APPOINT_NAME"> -->
+    {{form.APPOINT_NAME}}
+
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l1">L1:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> 
+      <!-- <input class="form-control" type="number" name="l1" id="id_l1"> -->
+      {{form.l1}}
+
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l2">L2:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l2}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l3">L3:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l3}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l4">L4:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l4}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l5">L5:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.l5}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l6">L6:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.l6}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l7">L7:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>    {{form.l7}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l8">L8:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.l8}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l9">L9:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l9}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l10">L10:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l10}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l11">L11:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l11}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l12">L12:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>  {{form.l12}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l13">L13:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.l13}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l14">L14:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.l14}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_l15">L15:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>    {{form.l15}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D1">D1:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>      {{form.D1}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D2">D2:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>      {{form.D2}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D3">D3:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>       {{form.D3}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D4">D4:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D4}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D5">D5:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D5}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D6">D6:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D6}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D7">D7:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D7}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D8">D8:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D8}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D9">D9:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>     {{form.D9}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D10">D10:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>    {{form.D10}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D11">D11:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>    {{form.D11}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D12">D12:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>    {{form.D12}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D13">D13:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>   {{form.D13}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D14">D14:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D14}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D15">D15:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D15}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D16">D16:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D16}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D17">D17:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D17}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D18">D18:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D18}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D19">D19:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D19}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D20">D20:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D20}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D21">D21:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D21}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D22">D22:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D22}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D23">D23:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D23}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D24">D24:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D24}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D25">D25:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D25}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D26">D26:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D26}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D27">D27:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D27}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D28">D28:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D28}}
+</div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D29">D29:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span> {{form.D29}}
+                </div></div></div><div class="form-group row"><label class="col-md-4 control-label"for="id_D30">D30:</label><div class="col-md-7 inputGroupContainer">         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>{{form.D30}}</div></div>
+                </div>
+    
+    
+        </div>
+           
+
+                </div>
+         
+            </div>
+                <br>
+                
+                <input style="float: right;" class="btn btn-info" type="submit" value="Submit">
+        </form>
+        </div>
+        
+    </body>
+</html>

@@ -1,57 +1,10 @@
 from django.shortcuts import render,redirect
 from app2.forms import *
 from app2.models import *
-
-# def religion(request):
-#     if request.method == "POST":
-#       form1= ReligionForm(request.POST)
-#       if form1.is_valid():
-#           try:
-#               form1.save()
-#               return redirect("/religion")
-#           except:
-#               pass
-#     else:
-#         form1= ReligionForm()
-#         religion1 = Religion.objects.all()
-#         return render(request,"religion/register.html", {"form1":form1, "religion1": religion1})
-
-
-
-# def show_religion(request):
-#     religion1 = Religion.objects.all()
-
-#     return render(request, "religion/index.html", {"religion1": religion1} )
-# def edit(request,id):
-#     religion2 = Religion.objects.get(RELIGION_NO=id)
-#     return render(request, "religion/edit.html", { 'religion2':religion2})
-# def modify_religion(request,id):
-#     religion2 =Religion.objects.get(RELIGION_NO=id)
-#     form1 = ReligionForm(request.POST, instance = religion2)
-#     # religion2.RELIGION_NO = form1.RELIGION_NO
-#     # religion2.RELIGION_NAME = form1.RELIGION_NAME
-#     # form1.RELIGION_NO = religion2.A.value#religion2.RELIGION_NO
-#     # form1.RELIGION_NAME = religion2.B.value#religion2.RELIGION_NAME
-#     if form1.is_valid():
-#         form1.save()
-#         return redirect("/religion")
-#     return render(request, "religion/edit.html", { 'form1':religion2})
-# def delete_religion(request,id):
-#     religion3 =Religion.objects.get(id=id)
-#     religion3.delete()
-#     return redirect("/show_religion")
-# Create your views here.
-
-# class ClassName(object):
-#     # """docstring for ."""
-#     model=
+from django.http import *
 
 from django.views.generic.edit import UpdateView,CreateView
 from django.views.generic.list import ListView
-from django.shortcuts import render,redirect
-from app2.forms import *
-from app2.models import *
-
 #start for religion model
 def religion(request):
     if request.method == "POST":
@@ -87,7 +40,7 @@ class ReligionUpdateView(UpdateView):
     success_url ="religion"
 
 def delete_religion(request,id):
-    religion3 =Religion.objects.get(id=id)
+    religion3 =Religion.objects.get(RELIGION_NO=id)
     religion3.delete()
     return redirect("/religion")
 
@@ -115,12 +68,22 @@ class CasteUpdateView(UpdateView):
         "CASTE_NAME"
     ]
 
-    success_url ="caste"
+    success_url ="show_caste"
+
+class CasteListView(ListView):
+    # specify the model you want to use
+    model = Caste
+
+    # specify the fields
+    # fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
+
+    # success_url ="MainDept"
+
 
 def delete_caste(request,id):
-    caste3 =Caste.objects.get(id=id)
+    caste3 =Caste.objects.get(CASTE_NO=id)
     caste3.delete()
-    return redirect("/caste")
+    return redirect("/show_caste")
 #End of caste
 
 def suplhead(request):
@@ -196,7 +159,7 @@ class TitleUpdateView(UpdateView):
 
 #delete title
 def delete_title(request,id):
-    title3 =Title.objects.get(id=id)
+    title3 =Title.objects.get(TITLE_NO=id)
     title3.delete()
     return redirect("/title")
 
@@ -228,7 +191,7 @@ def show_category(request):
 #update category
 class CategoryUpdateView(UpdateView):
     # specify the model you want to use
-    model = Title
+    model = Category
 
     # specify the fields
     fields = [
@@ -240,7 +203,7 @@ class CategoryUpdateView(UpdateView):
 
 #delete category
 def delete_category(request,id):
-    category3 =Category.objects.get(id=id)
+    category3 =Category.objects.get(CATEGORY_NO=id)
     category3.delete()
     return redirect("/category")
 
@@ -255,6 +218,18 @@ class MainDept_create(CreateView):
 
     success_url ="MainDeptShowView"
 
+class MainDeptUpdateView(UpdateView):
+
+    # specify the model for create view
+    model = MainDept
+
+    # specify the fields to be displayed
+
+    fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
+
+    success_url ="MainDeptShowView"
+
+
 class MainDeptShowView(ListView):
     # specify the model you want to use
     model = MainDept
@@ -263,6 +238,11 @@ class MainDeptShowView(ListView):
     # fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
 
     # success_url ="MainDept"
+
+def delete_maindept(request,id):
+    maindept3 =MainDept.objects.get(DEPT_NO=id)
+    maindept3.delete()
+    return redirect("/MainDeptShowView")
 
 class MainDesignation_create(CreateView):
 
@@ -283,6 +263,21 @@ class MainDesignationShowView(ListView):
     # fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
 
     # success_url ="MainDept"
+class MainDesignationUpdateView(UpdateView):
+
+    # specify the model for create view
+    model = MainDesignation
+
+    # specify the fields to be displayed
+
+    fields = "__all__"
+
+    success_url ="MainDesignationShowView"
+
+def delete_maindesig(request,id):
+    staff3 =MainDesignation.objects.get(DESIG_NO=id)
+    staff3.delete()
+    return redirect("/MainDesignationShowView")
 
 class Staff_create(CreateView):
 
@@ -304,6 +299,22 @@ class StaffShowView(ListView):
 
     # success_url ="MainDept"
 
+class StaffUpdateView(UpdateView):
+
+    # specify the model for create view
+    model = Staff
+
+    # specify the fields to be displayed
+
+    fields = "__all__"
+
+    success_url ="StaffShowView"
+
+def delete_staff(request,id):
+    staff3 =Staff.objects.get(STAFF_NO=id)
+    staff3.delete()
+    return redirect("/StaffShowView")
+
 class Scale_create(CreateView):
 
     # specify the model for create view
@@ -314,6 +325,16 @@ class Scale_create(CreateView):
     fields = "__all__"
 
     success_url ="ScaleShowView"
+def form_valid(self, form):
+    # form.instance.user = self.request.user
+    super(Scale_create, self).form_valid(form)
+    return redirect('ScaleShowView')
+
+
+def delete_scale(request,id):
+    scale3 =Scale.objects.get(SCALE_NO=id)
+    scale3.delete()
+    return redirect("/ScaleShowView")
 
 class ScaleShowView(ListView):
     # specify the model you want to use
@@ -323,6 +344,16 @@ class ScaleShowView(ListView):
     # fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
 
     # success_url ="MainDept"
+class ScaleUpdateView(UpdateView):
+
+    # specify the model for create view
+    model = Scale
+
+    # specify the fields to be displayed
+
+    fields = "__all__"
+
+    success_url ="ScaleShowView"
 
 class TypeTranCreateView(CreateView):
     # specify the model you want to use
@@ -355,6 +386,21 @@ class AppointmentListView(ListView):
     # specify the model for list view
     model = Appointment
 
+class AppointmentUpdateView(UpdateView):
+    # specify the model you want to use
+    model = Appointment
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_appointment"
+
+def delete_appointment(request,id):
+    appoint3 =Appointment.objects.get(APPOINT_NO=id)
+    appoint3.delete()
+    return redirect("/show_appointment")
+
 class UnderCollegeCreateView(CreateView):
     # specify the model you want to use
     model = UnderCollege
@@ -365,10 +411,26 @@ class UnderCollegeCreateView(CreateView):
     # updating details
     success_url ="show_undercollege"
 
+class UnderCollegeUpdateView(UpdateView):
+    # specify the model you want to use
+    model = UnderCollege
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_undercollege"
+
+
 class UnderCollegeListView(ListView):
 
     # specify the model for list view
     model = UnderCollege
+
+def delete_under(request,id):
+    college3 =UnderCollege.objects.get(UNO=id)
+    college3.delete()
+    return redirect("/show_undercollege")
 
 class BankCreateView(CreateView):
     # specify the model you want to use
@@ -415,6 +477,22 @@ class SubDeptListView(ListView):
     # specify the model for list view
     model = SubDept
 
+class SubDeptUpdateView(UpdateView):
+    # specify the model you want to use
+    model = SubDept
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdept"
+
+
+def delete_subdept(request,id):
+    college3 =SubDept.objects.get(SUBDEPT_NO=id)
+    college3.delete()
+    return redirect("/show_subdept")
+
 class InstallCreateView(CreateView):
     # specify the model you want to use
     model = InstallmentType
@@ -445,6 +523,23 @@ class SUBDESIGListView(ListView):
     # specify the model for list view
     model = SubDesignation
 
+
+class SUBDESIGUpdateView(UpdateView):
+    # specify the model you want to use
+    model = SubDesignation
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_subdesig"
+
+
+def delete_subdesig(request,id):
+    college3 =SubDesignation.objects.get(SUBDESIG_NO=id)
+    college3.delete()
+    return redirect("/show_subdesig")
+
 class DesignatureCreateView(CreateView):
     # specify the model you want to use
     model = Designature
@@ -459,9 +554,7 @@ class DesignatureListView(ListView):
 
     # specify the model for list view
     model = Designature
-    
-    
- 
+
 
 
 #crud operations
