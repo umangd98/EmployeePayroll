@@ -75,7 +75,7 @@ class Category(models.Model):
         db_table = "CATEGORY"
 
 class Religion(models.Model):
-    RELIGION_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    RELIGION_NO = models.AutoField(default=None, blank=True,primary_key=True)
     RELIGION_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "RELIGION"
