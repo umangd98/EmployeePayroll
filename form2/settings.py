@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'form2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'se_updated',
+        'NAME': 'se_prathamesh',
         'USER': 'root',
-        'PASSWORD': 'Umang@123',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

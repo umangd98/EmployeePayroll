@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 class MainDept(models.Model):
-    DEPT_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    DEPT_NO = models.AutoField(default=None, blank=True,primary_key=True)
     DEPT_NAME = models.CharField(max_length=20,null=True, blank=True)
     SDEPT = models.CharField(max_length=10,null=True, blank=True)
     def __str__(self):
@@ -11,7 +11,7 @@ class MainDept(models.Model):
         db_table = "DEPARTMENT"
 
 class SubDept(models.Model):
-    SUBDEPT_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    SUBDEPT_NO = models.AutoField(default=None, blank=True,primary_key=True)
     SUBDEPT_NAME = models.CharField(max_length=20,null=True, blank=True)
     SUBDEPT = models.CharField(max_length=10,null=True, blank=True)
     DEPT_NO = models.ForeignKey(MainDept,default=1,on_delete=models.CASCADE)
@@ -19,7 +19,7 @@ class SubDept(models.Model):
         db_table = "SUBDEPT"
 
 class MainDesignation(models.Model):
-    DESIG_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    DESIG_NO = models.AutoField(default=None, blank=True,primary_key=True)
     DESIG_NAME =models.CharField(max_length=20,null=True, blank=True)
     SDESIG = models.CharField(max_length=10,null=True, blank=True)
     def __str__(self):
@@ -29,7 +29,7 @@ class MainDesignation(models.Model):
         db_table = "DESIGNATION"
 
 class SubDesignation(models.Model):
-    SUBDESIG_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    SUBDESIG_NO = models.AutoField(default=None, blank=True,primary_key=True)
     SUBDESIG_NAME = models.CharField(max_length=50,null=True, blank=True)
     SUBDESIG = models.CharField(max_length=8,null=True, blank=True)
     DESIG_NO = models.ForeignKey(MainDesignation,default=1,on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class SubDesignation(models.Model):
         db_table = "SUBDESIG"
 
 class Scale(models.Model):
-    SCALE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    SCALE_NO = models.AutoField(primary_key=True)
     B1 = models.IntegerField(default=None,null=True, blank=True)
     l1= models.IntegerField(default=None,null=True, blank=True)
     B2 = models.IntegerField(default=None,null=True, blank=True)
@@ -56,20 +56,20 @@ class Scale(models.Model):
         db_table = "SCALE"
 
 class Staff(models.Model):
-    STAFF_NO = models.IntegerField(default=None,blank=True,primary_key=True)
+    STAFF_NO = models.AutoField(default=None,blank=True,primary_key=True)
     STAFF_NAME = models.CharField(max_length=40,null=True, blank=True)
     class Meta:
         db_table = "STAFF"
 
 
 class Caste(models.Model):
-    CASTE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    CASTE_NO = models.AutoField(default=None, blank=True,primary_key=True)
     CASTE_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "CASTE"
 
 class Category(models.Model):
-    CATEGORY_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    CATEGORY_NO = models.AutoField(default=None, blank=True,primary_key=True)
     CATEGORY_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "CATEGORY"
@@ -82,7 +82,7 @@ class Religion(models.Model):
 
 
 class Appointment(models.Model):
-    APPOINT_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    APPOINT_NO = models.AutoField(default=None, blank=True,primary_key=True)
     APPOINT_NAME = models.CharField(max_length=25,null=True, blank=True)
     l1 = models.IntegerField(default=None,null=True, blank=True)
     l2 = models.IntegerField(default=None,null=True, blank=True)
@@ -135,13 +135,13 @@ class Appointment(models.Model):
 
 
 class SuplHead(models.Model):
-    SUPLNO = models.IntegerField(default=None, blank=True,primary_key=True)
+    SUPLNO = models.AutoField(default=None, blank=True,primary_key=True)
     SUPLHEAD_NAME = models.CharField(max_length=30,null=True, blank=True)
     class Meta:
         db_table = "SUPLHEAD"
 
 class Bank(models.Model):
-    BNO = models.IntegerField(default=None, blank=True,primary_key=True)
+    BNO = models.AutoField(default=None, blank=True,primary_key=True)
     BSNAME = models.CharField(max_length=10,null=True, blank=True)
     BNAME = models.CharField(max_length=50,null=True, blank=True)
     LOCATION = models.CharField(max_length=35,null=True, blank=True)
@@ -151,19 +151,19 @@ class Bank(models.Model):
         db_table = "BANK"
 
 class City(models.Model):
-    CITY_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    CITY_NO = models.AutoField(default=None, blank=True,primary_key=True)
     CITY_NAME = models.CharField(max_length=25,null=True, blank=True)
     class Meta:
         db_table = "CITY"
 
 class Title(models.Model):
-    TITLE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    TITLE_NO = models.AutoField(default=None, blank=True,primary_key=True)
     TITLE_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "TITLE"
 
 class TypeTran(models.Model):
-    TYPETRAN_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    TYPETRAN_NO = models.AutoField(default=None, blank=True,primary_key=True)
     TYPETRAN_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "TYPETRAN"
@@ -171,7 +171,7 @@ class TypeTran(models.Model):
 # class NatureDesignation(models.Model):
     #CREATE NEW TABLE
 class UnderCollege(models.Model):
-    UNO = models.IntegerField(default=None, blank=True,primary_key=True)
+    UNO = models.AutoField(default=None, blank=True,primary_key=True)
     UGPG_NAME = models.CharField(max_length=20,null=True, blank=True)
     LUGPG = models.CharField(max_length=50,null=True, blank=True)
 
@@ -183,7 +183,7 @@ class UnderCollege(models.Model):
 #     #CREATE NEW TABLE
 
 class StaffType(models.Model):
-    STNO = models.IntegerField(default=None, blank=True,primary_key=True)
+    STNO = models.AutoField(default=None, blank=True,primary_key=True)
     STAFF_TYPE = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "STAFFTYPE"
@@ -219,7 +219,7 @@ class InstallmentType(models.Model):
         db_table = "INSTALLMENT"
 
 class Designature(models.Model):
-    DESIGNATURE_NO = models.IntegerField(default=None, blank=True,primary_key=True)
+    DESIGNATURE_NO = models.AutoField(default=None, blank=True,primary_key=True)
     DESIGNATURE_NAME = models.CharField(max_length=20,null=True, blank=True)
     class Meta:
         db_table = "DESIGNATURE"
