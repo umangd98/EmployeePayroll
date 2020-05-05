@@ -124,7 +124,7 @@ class SuplHeadCreateView(CreateView):
     # specify the fields
     fields = [
         "SUPLNO",
-        " SUPLHEAD_NAME"
+        "SUPLHEAD_NAME"
     ]
     # can specify success url
     # url to redirect after sucessfully
