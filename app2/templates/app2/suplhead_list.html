@@ -47,8 +47,8 @@
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr id="exp">
-        <th>TypeTran NO</th>
-        <th>TypeTran NAME</th>
+        <th>SuplHead NO</th>
+        <th>SuplHead NAME</th>
         <th>Crud Op1</th>
         <th>Crud Op2</th>
       </tr>
@@ -56,10 +56,10 @@
     <tbody>
       {% for object in object_list %}
        <tr id="exp">
-        <td id="hl">{{ object.TYPETRAN_NO }}</td>
-        <td id="hl">{{ object.TYPETRAN_NAME }}</td>
-        <td id="hl"><a href="/{{object.TYPETRAN_NO}}/update_typetran" class="btn btn-primary btn-sm">Modify</a></td>
-        <td id="hl"><a href="/{{object.TYPETRAN_NO}}/delete_typetran" class="btn btn-primary btn-sm">Delete</a></td>
+        <td id="hl">{{ object.SUPLNO }}</td>
+        <td id="hl">{{ object.SUPLHEAD_NAME}}</td>
+        <td id="hl"><a href="/{{object.SUPLNO}}/update_suplhead" class="btn btn-primary btn-sm">Modify</a></td>
+        <td id="hl"><a href="/delete_suplhead/{{object.SUPLNO}}" class="btn btn-primary btn-sm">Delete</a></td>
       </tr>
 
       {% endfor %}

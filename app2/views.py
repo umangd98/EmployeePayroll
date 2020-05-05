@@ -3,7 +3,7 @@ from app2.forms import *
 from app2.models import *
 from django.http import *
 
-from django.views.generic.edit import UpdateView,CreateView
+from django.views.generic.edit import UpdateView,CreateView, DeleteView
 from django.views.generic.list import ListView
 #start for religion model
 def religion(request):
@@ -86,19 +86,50 @@ def delete_caste(request,id):
     return redirect("/show_caste")
 #End of caste
 
-def suplhead(request):
-    if request.method == "POST":
-      form1= SuplHeadForm(request.POST)
-      if form1.is_valid():
-          try:
-              form1.save()
-              return redirect("/suplhead")
-          except:
-              pass
-    else:
-        form1=SuplHeadForm()
-        suplhead1 = SuplHead.objects.all()
-        return render(request,"caste/register.html", {"form1":form1, "caste1": suplhead1})
+# def suplhead(request):
+#     if request.method == "POST":
+#       form1= SuplHeadForm(request.POST)
+#       if form1.is_valid():
+#           try:
+#               form1.save()
+#               return redirect("/suplhead")
+#           except:
+#               pass
+#     else:
+#         form1=SuplHeadForm()
+#         suplhead1 = SuplHead.objects.all()
+#         return render(request,"caste/register.html", {"form1":form1, "caste1": suplhead1})
+
+# class SuplHeadUpdateView(UpdateView):
+#     # specify the model you want to use
+#     model = SuplHead
+
+#     # specify the fields
+#     fields = [
+#         "SUPLNO",
+#         " SUPLHEAD_NAME"
+#     ]
+
+#     success_url ="suplhead"
+
+# def delete_suplhead(request,id):
+#     suplhead3 =SuplHead.objects.get(id=id)
+#     suplhead3.delete()
+#     return redirect("/suplhead")
+
+
+class SuplHeadCreateView(CreateView):
+    # specify the model you want to use
+    model = SuplHead
+    # specify the fields
+    fields = [
+        "SUPLNO",
+        " SUPLHEAD_NAME"
+    ]
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="show_suplhead"
 
 class SuplHeadUpdateView(UpdateView):
     # specify the model you want to use
@@ -110,13 +141,21 @@ class SuplHeadUpdateView(UpdateView):
         " SUPLHEAD_NAME"
     ]
 
-    success_url ="suplhead"
+    success_url ="show_suplhead"
+
+class SuplHeadListView(ListView):
+    # specify the model you want to use
+    model = SuplHead
+
+    # specify the fields
+    # fields = ['DEPT_NO', 'DEPT_NAME', 'SDEPT']
+
+    # success_url ="MainDept"
 
 def delete_suplhead(request,id):
-    suplhead3 =SuplHead.objects.get(id=id)
+    suplhead3 =SuplHead.objects.get(SUPLNO=id)
     suplhead3.delete()
     return redirect("/suplhead")
-
 
 
 
@@ -371,6 +410,27 @@ class TypeTranListView(ListView):
     # specify the model for list view
     model = TypeTran
 
+
+
+class TypeTranUpdateView(UpdateView):
+    # specify the model you want to use
+    model = TypeTran
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="/show_typetran"
+
+class TypeTranDeleteView(DeleteView):
+    # specify the model you want to use
+    model = TypeTran
+
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    success_url ="/show_typetran"
+
 class AppointmentCreateView(CreateView):
     # specify the model you want to use
     model = Appointment
@@ -447,6 +507,26 @@ class BankListView(ListView):
     # specify the model for list view
     model = Bank
 
+
+class BankUpdateView(UpdateView):
+    # specify the model you want to use
+    model = Bank
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="/show_bank"
+
+class BankDeleteView(DeleteView):
+    # specify the model you want to use
+    model = Bank
+
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    success_url ="/show_bank"
+
 class CityCreateView(CreateView):
     # specify the model you want to use
     model = City
@@ -457,10 +537,33 @@ class CityCreateView(CreateView):
     # updating details
     success_url ="show_city"
 
+
+
 class CityListView(ListView):
 
     # specify the model for list view
     model = City
+
+
+class CityUpdateView(UpdateView):
+    # specify the model you want to use
+    model = City
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="/show_city"
+
+class CityDeleteView(DeleteView):
+    # specify the model you want to use
+    model = City
+
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    success_url ="/show_city"
+
 
 class SubDeptCreateView(CreateView):
     # specify the model you want to use
@@ -508,6 +611,27 @@ class InstallListView(ListView):
     # specify the model for list view
     model = InstallmentType
 
+
+class InstallUpdateView(UpdateView):
+    # specify the model you want to use
+    model = InstallmentType
+    # specify the fields
+    fields = "__all__"
+    # can specify success url
+    # url to redirect after sucessfully
+    # updating details
+    success_url ="/show_install"
+
+class InstallDeleteView(DeleteView):
+    # specify the model you want to use
+    model = InstallmentType
+
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    success_url ="/show_install"
+
+    
 class SUBDESIGCreateView(CreateView):
     # specify the model you want to use
     model = SubDesignation

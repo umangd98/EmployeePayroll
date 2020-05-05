@@ -51,9 +51,14 @@ urlpatterns = [
     re_path(r'^\d+/category',views.category),
     path('delete_category/<int:id>',views.delete_category),
     #suplhead
-    path('suplhead',views.suplhead),
-    path('<pk>/suplhead', views.SuplHeadUpdateView.as_view()),
-    re_path(r'^\d+/suplhead',views.suplhead),
+    # path('suplhead',views.suplhead),
+    # path('<pk>/suplhead', views.SuplHeadUpdateView.as_view()),
+    # re_path(r'^\d+/suplhead',views.suplhead),
+    # path('delete_suplhead/<int:id>',views.delete_suplhead),
+    path('suplhead', views.SuplHeadCreateView.as_view()),
+    path('show_suplhead', views.SuplHeadListView.as_view()),
+    path('<pk>/update_suplhead', views.SuplHeadUpdateView.as_view()),
+    re_path(r'^\d+/show_suplhead',views.SuplHeadUpdateView.as_view()),
     path('delete_suplhead/<int:id>',views.delete_suplhead),
     #Maindept
     path('MainDept', views.MainDept_create.as_view()),
@@ -83,6 +88,9 @@ urlpatterns = [
     #typetran
     path('typetran', views.TypeTranCreateView.as_view()),
     path('show_typetran', views.TypeTranListView.as_view()),
+
+    path('<pk>/update_typetran', views.TypeTranUpdateView.as_view()),
+    path('<pk>/delete_typetran', views.TypeTranDeleteView.as_view()),
     #appointment
     path('appointment', views.AppointmentCreateView.as_view()),
     path('show_appointment', views.AppointmentListView.as_view()),
@@ -98,9 +106,15 @@ urlpatterns = [
     #bank
     path('bank', views.BankCreateView.as_view()),
     path('show_bank', views.BankListView.as_view()),
+
+    path('<pk>/update_bank', views.BankUpdateView.as_view()),
+    path('<pk>/delete_bank', views.BankDeleteView.as_view()),
     #city
     path('city', views.CityCreateView.as_view()),
     path('show_city', views.CityListView.as_view()),
+
+    path('<pk>/update_city', views.CityUpdateView.as_view()),
+    path('<pk>/delete_city', views.CityDeleteView.as_view()),
     #Subdept
     path('subdept', views.SubDeptCreateView.as_view()),
     path('show_subdept', views.SubDeptListView.as_view()),
@@ -110,6 +124,9 @@ urlpatterns = [
     #InstallmentType
     path('install', views.InstallCreateView.as_view()),
     path('show_install', views.InstallListView.as_view()),
+
+    path('<pk>/update_install', views.InstallUpdateView.as_view()),
+    path('<pk>/delete_install', views.InstallDeleteView.as_view()),
     #SubDesignation
     path('subdesig', views.SUBDESIGCreateView.as_view()),
     path('show_subdesig', views.SUBDESIGListView.as_view()),
