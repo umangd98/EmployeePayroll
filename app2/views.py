@@ -3,7 +3,7 @@ from app2.forms import *
 from app2.models import *
 from django.http import *
 
-from django.views.generic.edit import UpdateView,CreateView, DeleteView
+from django.views.generic.edit import UpdateView,CreateView,DeleteView
 from django.views.generic.list import ListView
 #start for religion model
 def religion(request):
@@ -86,38 +86,6 @@ def delete_caste(request,id):
     return redirect("/show_caste")
 #End of caste
 
-# def suplhead(request):
-#     if request.method == "POST":
-#       form1= SuplHeadForm(request.POST)
-#       if form1.is_valid():
-#           try:
-#               form1.save()
-#               return redirect("/suplhead")
-#           except:
-#               pass
-#     else:
-#         form1=SuplHeadForm()
-#         suplhead1 = SuplHead.objects.all()
-#         return render(request,"caste/register.html", {"form1":form1, "caste1": suplhead1})
-
-# class SuplHeadUpdateView(UpdateView):
-#     # specify the model you want to use
-#     model = SuplHead
-
-#     # specify the fields
-#     fields = [
-#         "SUPLNO",
-#         " SUPLHEAD_NAME"
-#     ]
-
-#     success_url ="suplhead"
-
-# def delete_suplhead(request,id):
-#     suplhead3 =SuplHead.objects.get(id=id)
-#     suplhead3.delete()
-#     return redirect("/suplhead")
-
-
 class SuplHeadCreateView(CreateView):
     # specify the model you want to use
     model = SuplHead
@@ -138,10 +106,10 @@ class SuplHeadUpdateView(UpdateView):
     # specify the fields
     fields = [
         "SUPLNO",
-        " SUPLHEAD_NAME"
+        "SUPLHEAD_NAME"
     ]
 
-    success_url ="show_suplhead"
+    success_url ="/show_suplhead"
 
 class SuplHeadListView(ListView):
     # specify the model you want to use
@@ -152,10 +120,15 @@ class SuplHeadListView(ListView):
 
     # success_url ="MainDept"
 
-def delete_suplhead(request,id):
-    suplhead3 =SuplHead.objects.get(SUPLNO=id)
-    suplhead3.delete()
-    return redirect("/suplhead")
+class SuplHeadDeleteView(DeleteView):
+    # specify the model you want to use
+    model = SuplHead
+
+    # can specify success url
+    # url to redirect after sucessfully
+    # deleting object
+    success_url ="/show_suplhead"
+
 
 
 
@@ -410,8 +383,6 @@ class TypeTranListView(ListView):
     # specify the model for list view
     model = TypeTran
 
-
-
 class TypeTranUpdateView(UpdateView):
     # specify the model you want to use
     model = TypeTran
@@ -507,7 +478,6 @@ class BankListView(ListView):
     # specify the model for list view
     model = Bank
 
-
 class BankUpdateView(UpdateView):
     # specify the model you want to use
     model = Bank
@@ -537,13 +507,10 @@ class CityCreateView(CreateView):
     # updating details
     success_url ="show_city"
 
-
-
 class CityListView(ListView):
 
     # specify the model for list view
     model = City
-
 
 class CityUpdateView(UpdateView):
     # specify the model you want to use
@@ -563,7 +530,6 @@ class CityDeleteView(DeleteView):
     # url to redirect after sucessfully
     # deleting object
     success_url ="/show_city"
-
 
 class SubDeptCreateView(CreateView):
     # specify the model you want to use
@@ -611,7 +577,6 @@ class InstallListView(ListView):
     # specify the model for list view
     model = InstallmentType
 
-
 class InstallUpdateView(UpdateView):
     # specify the model you want to use
     model = InstallmentType
@@ -631,7 +596,6 @@ class InstallDeleteView(DeleteView):
     # deleting object
     success_url ="/show_install"
 
-    
 class SUBDESIGCreateView(CreateView):
     # specify the model you want to use
     model = SubDesignation
@@ -698,7 +662,7 @@ def crud_create(request):
             return HttpResponse("PROFILE CREATED")
 
         else:
-            #invalid form(user is redirected to create_profile.html form and displayed the relevant erors) 
+            #invalid form(user is redirected to create_profile.html form and displayed the relevant erors)
             title=Title.objects.all()
             designation_nature=Designation_Nature.objects.all()
             under=Under.objects.all()
@@ -744,10 +708,10 @@ def crud_read(request):
             obj= EmployeeInformation.objects.get(ID_NUMBER=id)
             if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
                 return HttpResponse("object not found")
-                
+
         except EmployeeInformation.DoesNotExist:
             return HttpResponse("Object does not exist")
-       
+
         return render(request, 'info/read_profile.html', { 'obj': obj })
 
 
@@ -767,10 +731,10 @@ def ask_id_for_update(request):
             obj= EmployeeInformation.objects.get(ID_NUMBER=id)
             if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
                 return HttpResponse("object not found")
-                
+
         except EmployeeInformation.DoesNotExist:
             return HttpResponse("Object does not exist")
-        
+
         #id is correct , therefore display details of profile as default and editable
         title=Title.objects.all()
         designation_nature=Designation_Nature.objects.all()
@@ -796,30 +760,30 @@ def ask_id_for_update(request):
 
 
 #update profile(called from form )
-#CANNOT ACCESS DIRECTLY FROM URL   
+#CANNOT ACCESS DIRECTLY FROM URL
 def crud_update(request):
-    
+
     if request.method == 'POST':
-        
+
         #check if updated profile is valid and update accordingly
         id=request.POST['ID_NUMBER']
         try:
-            
+
             obj= EmployeeInformation.objects.filter(ID_NUMBER=id).get()
-            
+
             if obj.SEQUENCE_NUMBER!=request.POST['SEQUENCE_NUMBER']:
                  return HttpResponse("object not found")
 
-            
+
             form = EmployeeInformationForm(request.POST, instance=obj)
 
-            if form.is_valid():   
+            if form.is_valid():
                 form.save()
                 return HttpResponse("data saved")
 
             else:
                 print(form.errors)
                 return HttpResponse("not updated")
-                
+
         except EmployeeInformation.DoesNotExist:
             return HttpResponse("Object does not exist")

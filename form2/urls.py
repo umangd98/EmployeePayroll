@@ -58,8 +58,10 @@ urlpatterns = [
     path('suplhead', views.SuplHeadCreateView.as_view()),
     path('show_suplhead', views.SuplHeadListView.as_view()),
     path('<pk>/update_suplhead', views.SuplHeadUpdateView.as_view()),
-    re_path(r'^\d+/show_suplhead',views.SuplHeadUpdateView.as_view()),
-    path('delete_suplhead/<int:id>',views.delete_suplhead),
+    #re_path(r'^\d+/show_suplhead',views.SuplHeadUpdateView.as_view()),
+    #path('delete_suplhead/<int:id>',views.SuplHeadDeleteView),
+    path('<pk>/delete_suplhead', views.SuplHeadDeleteView.as_view()),
+    #path('delete_suplhead', views.SuplHeadDeleteView.as_view()),
     #Maindept
     path('MainDept', views.MainDept_create.as_view()),
     path('MainDeptShowView', views.MainDeptShowView.as_view()),
