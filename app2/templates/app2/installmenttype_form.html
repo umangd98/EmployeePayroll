@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 
 <head>
@@ -320,3 +321,327 @@
 
     </body>
 </html>
+=======
+<html>
+
+<head>
+  <title>Installment Type</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        .carousel-control.left, .carousel-control.right {
+           background-image:none !important;
+           filter:none !important;
+        }
+        .center{
+          margin: auto;
+        }
+        .jumbotron{
+         width:60%;
+         height:60%;
+        }
+
+        .btun button{
+            margin-bottom: 5px;
+        }
+        #myCarousel{
+            max-height: 350px;
+            overflow-y: scroll;
+        }
+        .form-group{
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        .row{
+            padding: 1px;
+        }
+        .container{
+            width: 80%;
+        }
+        #myCarousel{
+            font-size: 20px;
+        }
+        .ex{
+            width: 13%;
+        }
+    </style>
+</head>
+    <body>
+
+        <div class="container">
+            <br>
+            <h1 style="text-align: center">Installment</h1>
+            <br>
+            <br>
+            <form method="POST">
+            <div id="myCarousel" class="carousel slide">
+
+                <div class="carousel-inner">
+
+        <div class="item">
+
+
+   <!-- Security token -->
+   {% csrf_token %}
+    <!-- <input type="hidden" name="csrfmiddlewaretoken" value="2JZaqJEow5VQS5HrkkFUjc3jJymCPf6rx3cLDpYyUNfLb05hYLFICjqnOGr7vjke"> -->
+
+    <div class="form-group row">
+    <!-- Using the formset -->
+    <label class="col-md-4 control-label" for="id_INO">Installment NO:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+        <!-- <input type="number" name="INO" class="form-control" id="id_INO"> -->
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_IDNO">ID NO:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="IDNO" class="form-control" maxlength="20" id="id_IDNO"> -->
+        {{form.IDNO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_PHEAD">PAY HEAD:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="PAYHEAD" class="form-control" maxlength="20" id="id_PHEAD"> -->
+        {{form.PHEAD}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_MAMT">MONTHLY AMOUNT</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="MONAMT" class="form-control" maxlength="20" id="id_MAMT"> -->
+    {{form.MONAMT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_INSTALNO">Installment NO:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="INSTALNO" class="form-control" maxlength="20" id="id_INSTALNO"> -->
+    {{form.INSTALNO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_TOTAMT">TOTAL AMOUNT:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="TOTAMT" class="form-control" maxlength="20" id="id_TOTAMT"> -->
+    {{form.TOTAMT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_REM">REM</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="REM" class="form-control" maxlength="20" id="id_REM"> -->
+    {{form.REM}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_STOP">STOP</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="STOP" class="form-control" maxlength="20" id="id_STOP"> -->
+    {{form.STOP}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_PAIDNO">PAID NO:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="PAIDNO" class="form-control" maxlength="20" id="id_PAIDNO"> -->
+    {{form.PAIDNO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_MON">MONTH</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="MON" class="form-control" maxlength="20" id="id_MON"> -->
+    {{form.MON}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_NEW">NEW</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="NEW" class="form-control" maxlength="20" id="id_NEW"> -->
+    {{form.NEW}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_REF_NO">REFERENCE NO.</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="REF_NO" class="form-control" maxlength="20" id="id_REF_NO"> -->
+    {{form.REF_NO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DESPNO">DESP NO:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="DESP_NO" class="form-control" maxlength="20" id="id_DESPNO"> -->
+    {{form.DESP_NO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DEFAAMT">DEFA AMT:</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="DEFA_AMT" class="form-control" maxlength="20" id="id_DEFAAMT"> -->
+    {{form.DEFA_AMT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_PROAMT">PRO_AMT</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="PRO_AMT" class="form-control" maxlength="20" id="id_PROAMT"> -->
+    {{form.PRO_AMT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_CODE">CODE</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="CODE" class="form-control" maxlength="20" id="id_CODE"> -->
+    {{form.CODE}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_IBNO">IBNO</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="IBNO" class="form-control" maxlength="20" id="id_IBNO"> -->
+    {{form.IBNO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_MONYEAR">MONYEAR</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="MONYEAR" class="form-control" maxlength="20" id="id_MONYEAR"> -->
+    {{form.MONYEAR}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_STOP1">STOP1</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="STOP1" class="form-control" maxlength="20" id="id_STOP1"> -->
+    {{form.STOP1}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_BAL_AMT">BAL_AMT</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="	BAL_AMT" class="form-control" maxlength="20" id="id_BAL_AMT"> -->
+    {{form.BAL_AMT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_REGULAR">REGULAR</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="REGULAR" class="form-control" maxlength="20" id="id_REGULAR"> -->
+    {{form.REGULAR}}
+        </div>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_LTNO">LTNO</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="LTNO" class="form-control" maxlength="20" id="id_LTNO"> -->
+    {{form.LTNO}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DESP_DT">DESP_DT</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="DESP_DT" class="form-control" maxlength="20" id="id_DESP_DT"> -->
+    {{form.DESP_DT}}
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_START_DT">START_DT</label>
+    <div class="col-md-7 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+    <!-- <input type="text" name="START_DT" class="form-control" maxlength="20" id="id_START_DT"> -->
+    {{form.START_DT}}
+        </div>
+    </div>
+    </div>
+
+        </div>
+                </div>
+            </div>
+                <br>
+                 <input style="float: right" class="btn btn-info" type="submit" value="Submit">
+</form>
+        </div>
+
+    </body>
+</html>
+>>>>>>> mayupdate
