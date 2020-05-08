@@ -1,0 +1,860 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        <style>
+        .carousel-control.left, .carousel-control.right {
+           background-image:none <div class="form-group row">important;
+           filter:none <div class="form-group row">important;
+        }
+        .center{
+          margin: auto;
+        }
+        .jumbotron{
+         width:60%;
+/*         height:60%;*/
+
+     }
+        * {
+  box-sizing: border-box;
+}
+
+
+        .spacing{
+            margin: 6px
+        }
+/*
+        .navbar{
+            background-color:
+        }
+*/
+        .carousel-inner{
+            min-height: 400px
+
+        }
+        .page-footer{
+            height: 50px;
+            background-color: black;
+        }
+        option{
+            min-width: 50px;
+        }
+        img {
+          border-radius: 50%;
+        }
+        .form-control{
+            color: <div class="form-group row">A2A2A2;
+        }
+        .btun button{
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .ex{
+            width: 11%;
+        }
+            li a{
+                color: white;
+            }
+            
+    </style>
+    </head>
+    <body onload="myFunction()">
+        <div class="container">
+            
+            <nav class="navbar navbar-expand-sm bg-dark">
+
+  
+  <ul class="navbar-nav">
+      <a class="navbar-brand" href="#">
+    <img src="{% static 'img/vnitlogo.png' %}" alt="logo" style="width:40px;">
+  </a>
+      
+    <li class="nav-item">
+      <a class="nav-link" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact Us</a>
+    </li>
+  </ul>
+
+</nav>
+            <br>
+            <div id="myCarousel" class="carousel slide jumbotron center" data-ride="carousel">
+                
+                <div class="btun" style="text-align:center;padding: 5px;">
+    
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(1)" style="text-align: center;"><span id="s">Page1</span></button> 
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(2)"><span id="s">Page2</span></button> 
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(3)"><span id="s">Page3</span></button> 
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(4)"><span id="s">Page4</span></button> 
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(5)"><span id="s">Page5</span></button>
+                    <button type="button" class="btn btn-outline-dark b ex" onclick="currentSlide(6)"><span id="s">Page6</span></button> 
+                   <br>
+                </div>
+                
+    <form action="/updatetemp" method="post">
+        {% csrf_token %}
+        <div>
+            {{messages}}
+        </div>
+        <div class="carousel-inner">
+      <div class="item active">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset>
+                          <div class="form-group row">
+                                <label  class="col-md-4 control-label">TITLE:</label> 
+                                    <div class="col-md-7 inputGroupContainer">
+                                     <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                                    <select class="form-control" name="TITLE" size="1" id="id_TITLE">
+                                    {% for i in title %}
+                                        <option value="{{i.TITLE_NAME}}">{{i.TITLE_NAME}}</option>
+                                    {% endfor %}
+                                    </select>
+                                        </div>
+                                    </div>
+                          </div>
+        <p><input class="form-control" type="text" name="ID_NUMBER" id="id_ID_NUMBER" value="{{obj.ID_NUMBER}}" hidden></p>
+        <p><input class="form-control" type="text" name="SEQUENCE_NUMBER" id="id_SEQUENCE_NUMBER" value="{{obj.SEQUENCE_NUMBER}}"  hidden></p>
+                          
+                          <div class="form-group row">
+                                <label class="col-md-4 control-label" for="id_FIRST_NAME" >FIRST NAME:</label>
+                              
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="text" name="FIRST_NAME" maxlength="50" id="id_FIRST_NAME" value="{{obj.FIRST_NAME}}">
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                                <label class="col-md-4 control-label" for="id_MIDDLE_NAME" >MIDDLE NAME:</label>
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="text" name="MIDDLE_NAME" maxlength="50" id="id_MIDDLE_NAME" value="{{obj.MIDDLE_NAME}}">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              
+            <label class="col-md-4 control-label" for="id_LAST_NAME">LAST NAME:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="text" name="LAST_NAME" maxlength="50" id="id_LAST_NAME" value="{{obj.LAST_NAME}}">
+                                  </div>
+                              </div>
+                          </div>
+                              
+                          <div class="form-group row">
+        <label class="col-md-4 control-label" for="id_FATHER_NAME">FATHER NAME:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                                <input class="form-control" type="text" name="FATHER_NAME" maxlength="50" id="id_FATHER_NAME" value="{{obj.FATHER_NAME}}">
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+          </table>
+            </div>
+            
+            
+               <div class="item">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset>      
+                          <div class="form-group row">
+        <label class="col-md-4 control-label" for="id_INCREMENT_DATE">INCREMENT DATE:</label>
+                          <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+            <input class="form-control" type="date" name="INCREMENT_DATE" required id="id_INCREMENT_DATE" value="{{obj.INCREMENT_DATE}}">
+                              </div>
+                          </div>
+                          </div>
+                          
+                          <div class="form-group row">
+        <label class="col-md-4 control-label" for="id_DATE_OF_BIRTH">DATE OF BIRTH:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="date" name="DATE_OF_BIRTH" required id="id_DATE_OF_BIRTH">
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+        <label class="col-md-4 control-label" for="id_DATE_OF_JOINING">DATE OF JOINING:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="date" name="DATE_OF_JOINING" required id="id_DATE_OF_JOINING" value="{{obj.DATE_OF_JOINING}}">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DATE_OF_RETIREMENT">DATE OF RETIREMENT:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                          <input class="form-control" type="date" name="DATE_OF_RETIREMENT" required id="id_DATE_OF_RETIREMENT" value="{{obj.DATE_OF_RETIREMENT}}">
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DESIGNATION_NAME">DESIGNATION NAME:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="text" name="DESIGNATION_NAME" maxlength="50" id="id_DESIGNATION_NAME" value="{{obj.DESIGNATION_NAME}}">
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_GENDER">GENDER:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <select class="form-control" name="GENDER" size="1" id="id_GENDER">
+                                    {% for i in gender %}
+                                        {% if i.NAME|stringformat:"s" == obj.GENDER|stringformat:"s" %}
+                                            <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+                                            {% else %}
+                                                <option value="{{i.NAME}}">{{i.NAME}}</option>
+                                            {% endif %}
+                                    {% endfor %}
+    
+                            </select>
+                                  </div>
+                              </div>
+                                  
+                          </div>
+    
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+                   </table>
+            </div>
+            
+            <div class="item">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset> 
+                          
+              <div class="form-group row">  
+                  <div class="col-md-2">
+        <label class="check-label" for="id_TA_0">TA:</label> 
+                  </div>
+                  {% if  obj.TA|stringformat:"s" == "True"  %}
+                  <div class="col-md-2">
+        <div class="form-check" id="id_TA">
+                
+                    <label class="check-label" for="id_TA_0"><input class="form-check-label" type="radio" name="TA" value="True" id="id_TA_0" checked>Yes</label>
+                    
+                    
+                    <label class="check-label" for="id_TA_1"><input class="form-check-label" type="radio" name="TA" value="False" id="id_TA_1" >No</label>  
+                    
+                     
+        </div>
+                  </div>
+                  {% else %}
+                    <div class="col-md-2">
+        <div class="form-check" id="id_TA">
+                
+                    <label class="check-label" for="id_TA_0"><input class="form-check-label" type="radio" name="TA" value="True" id="id_TA_0">Yes</label>
+                    
+                    
+                    <label class="check-label" for="id_TA_1"><input class="form-check-label" type="radio" name="TA" value="False" id="id_TA_1" checked>No</label>  
+                    
+                     
+        </div>
+                  </div>
+                  {% endif %}
+              </div>                
+    
+                <div class="form-group row">
+                    <div class="col-md-2">
+            <label class="check-label" for="id_PT_0">PT:</label> 
+                    </div>
+                    {% if  obj.PT|stringformat:"s" == "True"  %}
+                    <div class="col-md-2" id="id_PT">
+                        <div class="form-check">
+            <label class="check-label" for="id_PT_0"><input class="form-check-label" type="radio" name="PT" value="True" id="id_PT_0" checked>Yes</label>
+                        
+         
+
+            <label class="check-label" for="id_PT_1"><input class="form-check-label" type="radio" name="PT" value="False" id="id_PT_1">No</label>
+                        
+                        </div>
+                
+                    </div>
+                    {% else %}
+                    <div class="col-md-2" id="id_PT">
+                        <div class="form-check">
+            <label class="check-label" for="id_PT_0"><input class="form-check-label" type="radio" name="PT" value="True" id="id_PT_0" >Yes</label>
+                        
+         
+
+            <label class="check-label" for="id_PT_1"><input class="form-check-label" type="radio" name="PT" value="False" id="id_PT_1" checked>No</label>
+                        
+                        </div>
+                
+                    </div>
+                    {% endif %}
+                    
+            </div>
+                          
+                          <div class="form-group row">
+                              <div class="col-md-2">
+    <label class="check-label" for="id_QUARTER_0">QUARTER:</label> 
+                              </div>
+                              {% if  obj.QUARTER|stringformat:"s" == "True"  %}
+        <div class="col-md-2" id="id_QUARTER">
+            <div class="form-check">
+        <label class="check-label" for="id_QUARTER_0"> <input class="form-check-label" type="radio" name="QUARTER" value="True" id="id_QUARTER_0" checked>Yes</label>
+            
+           
+     
+    
+        <label class="check-label" for="id_QUARTER_1"><input class="form-check-label" type="radio" name="QUARTER" value="False" id="id_QUARTER_1">No</label>
+     
+            </div>
+                          </div>
+                              {% else %}
+                              <div class="col-md-2" id="id_QUARTER">
+            <div class="form-check">
+        <label class="check-label" for="id_QUARTER_0"> <input class="form-check-label" type="radio" name="QUARTER" value="True" id="id_QUARTER_0">Yes</label>
+            
+           
+     
+    
+        <label class="check-label" for="id_QUARTER_1"><input class="form-check-label" type="radio" name="QUARTER" value="False" id="id_QUARTER_1" checked>No</label>
+     
+            </div>
+                          </div>
+                              {% endif%}
+                          </div>
+                          
+                          
+                          <div class="form-group row">
+                              <div class="col-md-2">
+    <label class="check-label" for="id_RENT_FREE_0">RENT FREE:</label> 
+                              </div>
+                              {% if  obj.RENT_FREE|stringformat:"s" == "True"  %}
+                              <div class="col-md-2" id="id_RENT_FREE">
+                                  <div class="form-check">
+        <label class="check-label" for="id_RENT_FREE_0"><input class="form-check-label" type="radio" name="RENT_FREE" value="True" id="id_RENT_FREE_0" checked>Yes</label>
+                                  
+    
+    
+    <label class="check-label" for="id_RENT_FREE_1"><input class="form-check-label" type="radio" name="RENT_FREE" value="False" id="id_RENT_FREE_1">No</label>
+                                  
+                                  </div>
+    
+                          </div>
+                              {% else %}
+                              <div class="col-md-2" id="id_RENT_FREE">
+                                  <div class="form-check">
+        <label class="check-label" for="id_RENT_FREE_0"><input class="form-check-label" type="radio" name="RENT_FREE" value="True" id="id_RENT_FREE_0">Yes</label>
+                                  
+    
+    
+    <label class="check-label" for="id_RENT_FREE_1"><input class="form-check-label" type="radio" name="RENT_FREE" value="False" id="id_RENT_FREE_1" checked>No</label>
+                                  
+                                  </div>
+    
+                          </div>
+                              {% endif%}
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_QUARTER_ADDRESS">QUARTER ADDRESS:</label> 
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <input class="form-control" type="text" name="QUARTER_ADDRESS" maxlength="50" id="id_QUARTER_ADDRESS">
+                                  </div>
+                              </div>
+                          </div>      
+             
+                          <div class="form-group row">
+                              <div class="col-md-2">
+    <label class="check-label" for="id_HANDICAP_0">HANDICAP:</label>
+                              </div>
+                              {% if  obj.RENT_FREE|stringformat:"s" == "True"  %}
+                                  <div class="col-md-2" id="id_HANDICAP">
+                                      <div class="form-check">
+       <label class="check-label" for="id_HANDICAP_0"><input class="form-check-label" type="radio" name="HANDICAP" value="True" id="id_HANDICAP_0" checked>
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_HANDICAP_1"><input class="form-check-label" type="radio" name="HANDICAP" value="False" id="id_HANDICAP_1">
+     No</label>
+                                      </div>
+    
+                                  </div>
+                              {% else %}
+                              <div class="col-md-2" id="id_HANDICAP">
+                                      <div class="form-check">
+       <label class="check-label" for="id_HANDICAP_0"><input class="form-check-label" type="radio" name="HANDICAP" value="True" id="id_HANDICAP_0">
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_HANDICAP_1"><input class="form-check-label" type="radio" name="HANDICAP" value="False" id="id_HANDICAP_1" checked>
+     No</label>
+                                      </div>
+    
+                                  </div>
+                              {% endif %}
+                          </div>
+                  
+                          <div class="form-group row">
+                              <div class="col-md-2">
+    
+    <label class="check-label" for="id_SENIOR_CITIZEN_0">SENIOR CITIZEN:</label>
+                              </div>
+                              {% if  obj.RENT_FREE|stringformat:"s" == "True"  %}
+                                  <div class="col-md-2" id="id_SENIOR_CITIZEN">
+                                      <div class="form-check">
+        <label class="check-label" for="id_SENIOR_CITIZEN_0"><input class="form-check-label" type="radio" name="SENIOR_CITIZEN" value="True" id="id_SENIOR_CITIZEN_0" checked>
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_SENIOR_CITIZEN_1"><input class="form-check-label" type="radio" name="SENIOR_CITIZEN" value="False" id="id_SENIOR_CITIZEN_1">
+     No</label>
+    
+                                      </div>
+                                  </div>
+                              {% else %}
+                              <div class="col-md-2" id="id_SENIOR_CITIZEN">
+                                      <div class="form-check">
+        <label class="check-label" for="id_SENIOR_CITIZEN_0"><input class="form-check-label" type="radio" name="SENIOR_CITIZEN" value="True" id="id_SENIOR_CITIZEN_0">
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_SENIOR_CITIZEN_1"><input class="form-check-label" type="radio" name="SENIOR_CITIZEN" value="False" id="id_SENIOR_CITIZEN_1" checked>
+     No</label>
+    
+                                      </div>
+                                  </div>
+                              {% endif %}
+                              </div>
+    
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+                </table>
+            </div>
+        
+            <div class="item">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset> 
+    
+                          <div class="form-group row">
+        <label class="col-md-4 control-label" for="id_DESIGNATION">DESIGNATION:</label>
+                              <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                              <select class="form-control" name="DESIGNATION" size="1" id="id_DESIGNATION">
+        {% for i in designation %}
+            {% if i.DESIG_NAME|stringformat:"s" == obj.DESIGNATION|stringformat:"s" %}
+                <option value="{{i.DESIG_NAME}}" selected>{{i.DESIG_NAME}}</option>
+            {% else %}
+                <option value="{{i.DESIG_NAME}}">{{i.DESIG_NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    
+    
+    </select>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_DEPARTMENT">DEPARTMENT:</label> 
+            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+        <select class="form-control" name="DEPARTMENT" size="1" id="id_DEPARTMENT">
+        {% for i in department %}
+            {% if i.DEPT_NAME|stringformat:"s" == obj.DEPARTMENT|stringformat:"s" %}
+                <option value="{{i.DEPT_NAME}}" selected>{{i.DEPT_NAME}}</option>
+            {% else %}
+                <option value="{{i.DEPT_NAME}}">{{i.DEPT_NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    
+    </select>
+                </div>
+                              </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_STAFF_TYPE">STAFF TYPE:</label> 
+            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+        <select class="form-control" name="STAFF_TYPE" size="1" id="id_STAFF_TYPE">
+        {% for i in staff_type %}
+            {% if i.STAFF_TYPE|stringformat:"s" == obj.STAFF_TYPE|stringformat:"s" %}
+                <option value="{{i.STAFF_TYPE}}" selected>{{i.STAFF_TYPE}}</option>
+            {% else %}
+                <option value="{{i.STAFF_TYPE}}">{{i.STAFF_TYPE}}</option>
+            {% endif %}
+        {% endfor %}
+    
+    </select>
+                </div>
+                          </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_APPOINTMENT">APPOINTMENT:</label> 
+        
+            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+        <select class="form-control" name="APPOINTMENT" size="1" id="id_APPOINTMENT">
+        {% for i in appointment %}
+            {% if i.APPOINT_NAME|stringformat:"s" == obj.APPOINTMENT|stringformat:"s" %}
+                <option value="{{i.APPOINT_NAME}}" selected>{{i.APPOINT_NAME}}</option>
+            {% else %}
+                <option value="{{i.APPOINT_NAME}}">{{i.APPOINT_NAME}}</option>
+            {% endif %}
+        {% endfor %}
+
+    
+    </select>
+                </div>
+                          </div>
+                          </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_VACATIONAL">VACATIONAL:</label> 
+                          <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                          <select class="form-control" name="VACATIONAL" size="1" id="id_VACATIONAL">
+        {% for i in vacational %}
+            {% if i.NAME|stringformat:"s" == obj.VACATIONAL|stringformat:"s" %}
+            <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+            {% else %}
+                <option value="{{i.NAME}}">{{i.NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    
+    </select>
+                              </div>
+                          </div>
+                       </div>
+                          
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_BANK_NAME">BANK NAME:</label>
+                          <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                          <select class="form-control" name="BANK_NAME" size="1" id="id_BANK_NAME">
+        {% for i in bank_name %}
+            {% if i.NAME|stringformat:"s" == obj.BANK_NAME|stringformat:"s" %}
+                <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+            {% else %}
+                <option value="{{i.NAME}}">{{i.NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    
+    </select>
+                              </div>
+                          </div>
+                          </div>
+                          
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+                </table>
+            </div>
+            
+            <div class="item">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset> 
+                          
+    <p><label class="check-label" for="id_BANK_ACCOUNT_NUMBER">BANK ACCOUNT NUMBER:</label> <input class="form-control" type="text" name="BANK_ACCOUNT_NUMBER" maxlength="50" id="id_BANK_ACCOUNT_NUMBER" value="{{obj.BANK_ACCOUNT_NUMBER}}"></p>
+    <p><label class="check-label" for="id_PF_NUMBER">PF NUMBER:</label> <input class="form-control" type="text" name="PF_NUMBER" maxlength="50" id="id_PF_NUMBER" value="{{obj.PF_NUMBER}}"></p>
+    <p><label class="check-label" for="id_PRAN_NUMBER">PRAN NUMBER:</label> <input class="form-control" type="text" name="PRAN_NUMBER" maxlength="50" id="id_PRAN_NUMBER" value="{{obj.PRAN_NUMBER}}" ></p>
+    <p><label class="check-label" for="id_PAN_NUMBER">PAN NUMBER:</label> <input class="form-control" type="text" name="PAN_NUMBER" maxlength="50" id="id_PAN_NUMBER" value="{{obj.PAN_NUMBER}}"></p>
+    <p><label class="check-label" for="id_UNDER">UNDER:</label> <select class="form-control" name="UNDER" size="1" id="id_UNDER">
+        {% for i in under %}
+            {% if i.NAME|stringformat:"s" == obj.UNDER|stringformat:"s" %}
+                <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+            {% else %}
+                <option value="{{i.NAME}}">{{i.NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    </select></p>
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+                </table>
+            </div>
+            
+            <div class="item">
+        <table class="table table-striped">
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <div class="well form-horizontal">
+                      <fieldset> 
+    <p><label class="check-label" for="id_LEVEL">LEVEL:</label> <select class="form-control" name="LEVEL" size="1" id="id_LEVEL">
+        {% for i in level %}
+            {% if i.NAME|stringformat:"s" == obj.LEVEL|stringformat:"s" %}
+                <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+            {% else %}
+                <option value="{{i.NAME}}">{{i.NAME}}</option>
+            {% endif %}
+        {% endfor %}
+    </select></p>
+    <p><label class="check-label" for="id_BASIC">BASIC:</label> <input class="form-control" type="number" name="BASIC" required value={{obj.BASIC}} id="id_BASIC"></p>
+    
+                   <div class="form-group row">
+                              <div class="col-md-4">       
+        <label class="check-label" for="id_PAY_STATUS_0">PAY STATUS:</label> 
+                       </div>
+                       {% if  obj.PAY_STATUS|stringformat:"s" == "True"  %}
+                                  <div class="col-md-2" id="id_PAY_STATUS">
+                                      <div class="form-check">
+        <label class="check-label" for="id_PAY_STATUS_0"><input class="form-check-label" type="radio" name="PAY_STATUS" value="True" id="id_PAY_STATUS_0" checked>
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_PAY_STATUS_1"><input class="form-check-label" type="radio" name="PAY_STATUS" value="False" id="id_PAY_STATUS_1">
+     No</label>
+                                      </div>
+                       </div>
+                        {% else %}
+                                  <div class="col-md-2" id="id_PAY_STATUS">
+                                      <div class="form-check">
+        <label class="check-label" for="id_PAY_STATUS_0"><input class="form-check-label" type="radio" name="PAY_STATUS" value="True" id="id_PAY_STATUS_0">
+     Yes</label>
+    
+    
+        <label class="check-label" for="id_PAY_STATUS_1"><input class="form-check-label" type="radio" name="PAY_STATUS" value="False" id="id_PAY_STATUS_1" checked>
+     No</label>        
+                        {% endif %}
+                       </div>
+                          </div>
+                          
+                          </div>
+                          
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="id_RULE">RULE:</label> 
+                            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                                    <select class="form-control" name="RULE" size="1" id="id_RULE">
+                                        {% for i in rule %}
+                                                {% if i.NAME|stringformat:"s" == obj.RULE|stringformat:"s" %}
+                                                    <option value="{{i.NAME}}" selected>{{i.NAME}}</option>
+                                                {% else %}
+                                                    <option value="{{i.NAME}}">{{i.NAME}}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                               
+                          <div class="form-group row">
+    <label class="col-md-4 control-label" for="id_REMARK">REMARK:</label> 
+                          <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                          <input class="form-control" type="text" name="REMARK" maxlength="50" id="id_REMARK" value="{{obj.REMARK}}">
+                              </div>
+                          </div>
+                          </div>
+                          
+        <button type="submit">SUBMIT</button>
+
+                       </fieldset>
+                    </div>
+                 </td>
+              </tr>
+            </tbody>
+                </table>
+            </div>
+        </div>
+                </form>
+                <script>
+                    function myFunction() 
+                    {
+                        var a;
+                        var d;
+                        var x;
+            
+                        
+                        x="";
+                        a="{{obj.DATE_OF_JOINING}}";
+                        d = new Date(a);
+                        x = d.getFullYear()+"-";
+                        var m=d.getMonth() +1;
+                        if(m <10)
+                        {
+                            x=x+"0";
+                        }
+                        console.log(d.getMonth());
+                        x=x+m+"-";
+                        if(d.getDate() <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+d.getDate();
+                        console.log(x);
+                        document.getElementById("id_DATE_OF_JOINING").value = x;
+            
+                        x="";
+                        a="{{obj.DATE_OF_RETIREMENT}}";
+                        d = new Date(a);
+                        x = d.getFullYear()+"-";
+                        m=d.getMonth() +1;
+                        if(m <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+m+"-";
+                        if(d.getDate() <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+d.getDate();
+                        document.getElementById("id_DATE_OF_RETIREMENT").value = x;
+            
+            
+            
+            
+                        x="";
+                        a="{{obj.INCREMENT_DATE}}";
+                        d = new Date(a);
+                        x = d.getFullYear()+"-";
+                        m=d.getMonth() +1;
+                        if(m <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+m+"-";
+                        if(d.getDate() <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+d.getDate();
+                        document.getElementById("id_INCREMENT_DATE").value = x;
+            
+                        
+                        
+                        x="";
+                        a="{{obj.DATE_OF_BIRTH}}";
+                        d = new Date(a);
+                        x = d.getFullYear()+"-";
+                        m=d.getMonth() +1;
+                        if(m <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+m+"-";
+                        if(d.getDate() <10)
+                        {
+                            x=x+"0";
+                        }
+                        x=x+d.getDate();
+                        document.getElementById("id_DATE_OF_BIRTH").value = x;
+            
+                    }    
+                </script>
+                
+                <div class="row">
+          <div class="col-sm-3">
+          <button type="button" class="btn btn-outline-dark btn-block" onclick="plusSlides(-1)">Prev</button>
+          </div>
+          <div class="col-sm-3">
+          <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" 
+                  data-target="myModal">Views</button>
+          </div>
+          <div class="col-sm-3">
+          <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="myModal2">Modify</button>
+              </div>
+
+          <div class="col-sm-3">
+          <button type="button" class="btn btn-outline-dark btn-block" onclick="plusSlides(1)" style="float: right;">Next</button>
+              </div>
+                    
+      </div>
+            </div>
+            <br>
+            
+            <footer class="page-footer font-small black">
+
+  
+  <div style="color: white;" class="footer-copyright text-center py-10">2021 Batch Copyright:
+    <a href="https://vnit.ac.in"> VNIT Portal</a>
+  </div>
+  
+
+</footer>
+        </div>
+        
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("item");
+        //  var dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = slides.length}    
+          if (n < 1) {slideIndex = 1}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+          }
+        //  for (i = 0; i < dots.length; i++) {
+        //      dots[i].className = dots[i].className.replace(" active", "");
+        //  }
+          slides[slideIndex-1].style.display = "block";  
+        //  dots[slideIndex-1].className += " active";
+        }    
+    </script>
+    </body>
+    </html>
