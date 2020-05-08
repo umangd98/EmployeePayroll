@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style> 
+      .encap{
+                /*background-image: linear-gradient(to right, #0ED2F7, #A770EF);
+                min-height: 300px;*/
+                
+                padding: 40px;
+                
+      }
+      
+      table{
+          background-color: white;
+          border-radius: 10px;
+         
+          margin: auto;
+      }
+      
+      #hl:hover{
+          background-color: #343A40;
+          color: white;
+      }
+      h2,p{
+          color: white;
+      }
+      .table{
+          width: 80%;
+          margin: auto;
+      }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="encap">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr id="exp">
+        <th>UNO</th>
+        <th>UPG_NAME</th>
+        <th>L1</th>
+        <th>L2</th>
+        <th>L3</th>
+        <th>L4</th>
+        <th>L5</th>
+        <th>L6</th>
+        <th>L7</th>
+        <th>L8</th>
+        <th>L9</th>
+        <th>L10</th>
+        <th>L11</th>
+        <th>L12</th>
+        <th>L13</th>
+        <th>L14</th>
+        <th>L15</th>
+        <th>D1</th>
+        <th>D2</th>
+        <th>D3</th>
+        <th>D4</th>
+        <th>D5</th>
+        <th>D6</th>
+        <th>D7</th>
+        <th>D8</th>
+        <th>D9</th>
+        <th>D10</th>
+        <th>D11</th>
+        <th>D12</th>
+        <th>D13</th>
+        <th>D14</th>
+        <th>D15</th>
+        <th>D16</th>
+        <th>D17</th>
+        <th>D18</th>
+        <th>D19</th>
+        <th>D20</th>
+        <th>D21</th>
+        <th>D22</th>
+        <th>D23</th>
+        <th>D24</th>
+        <th>D25</th>
+        <th>D26</th>
+        <th>D27</th>
+        <th>D28</th>
+        <th>D29</th>
+        <th>D30</th>
+        <th>Crudop1</th>
+        <th>Crudop2</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+        {% for object in object_list %} 
+        <tr id="exp">
+        <td id="hl">{{object.APPOINT_NO}}</td> 
+        <td id="hl">{{object.APPOINT_NAME}}</td> 
+        <td id="hl">{{object.l1 }}</td> 
+        <td id="hl">{{object.l2}}</td> 
+        <td id="hl">{{object.l3 }}</td> 
+        <td id="hl">{{object.l4}}</td> 
+        <td id="hl">{{object.l5}}</td> 
+        <td id="hl">{{object.l6}}</td> 
+        <td id="hl">{{object.l7}}</td> 
+        <td id="hl">{{object.l8}}</td> 
+        <td id="hl">{{object.l9 }}</td> 
+        <td id="hl">{{object.l10}}</td> 
+        <td id="hl">{{object.l11}}</td> 
+        <td id="hl">{{object.l12}}</td> 
+        <td id="hl">{{object.l13}}</td> 
+        <td id="hl">{{object.l14}}</td> 
+        <td id="hl">{{object.l15}}</td> 
+        <td id="hl">{{object.D1}}</td> 
+        <td id="hl">{{object.D2}}</td> 
+        <td id="hl">{{object.D3}}</td> 
+        <td id="hl">{{object.D4}}</td> 
+        <td id="hl">{{object.D5}}</td> 
+        <td id="hl">{{object.D6}}</td> 
+        <td id="hl">{{object.D7}}</td> 
+        <td id="hl">{{object.D8}}</td> 
+        <td id="hl">{{object.D9}}</td> 
+        <td id="hl">{{object.D10}}</td> 
+        <td id="hl">{{object.D11}}</td> 
+        <td id="hl">{{object.D12}}</td> 
+        <td id="hl">{{object.D13}}</td> 
+        <td id="hl">{{object.D14}}</td> 
+        <td id="hl">{{object.D15}}</td> 
+        <td id="hl">{{object.D16}}</td> 
+        <td id="hl">{{object.D17}}</td> 
+        <td id="hl">{{object.D18}}</td> 
+        <td id="hl">{{object.D19}}</td> 
+        <td id="hl">{{object.D20}}</td> 
+        <td id="hl">{{object.D21}}</td> 
+        <td id="hl">{{object.D22}}</td> 
+        <td id="hl">{{object.D23}}</td> 
+        <td id="hl">{{object.D24}}</td> 
+        <td id="hl">{{object.D25}}</td> 
+        <td id="hl">{{object.D26}}</td> 
+        <td id="hl">{{object.D27}}</td> 
+        <td id="hl">{{object.D28}}</td> 
+        <td id="hl">{{object.D29}}</td> 
+        <td id="hl">{{object.D30}}</td>
+        <td id="hl"><a href="/{{object.APPOINT_NO}}/update_appointment" class="btn btn-primary btn-sm">Modify</a></td>
+        <td id="hl"><a href="/delete_appointment/{{object.APPOINT_NO}}" class="btn btn-primary btn-sm">Delete</a></td>  
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+    </div>
+</div>
+
+</body>
+</html>

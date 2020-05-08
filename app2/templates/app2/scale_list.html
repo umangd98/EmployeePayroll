@@ -1,0 +1,98 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style> 
+      .encap{
+                background-image: linear-gradient(to right, #0ED2F7, #A770EF);
+                min-height: 300px;
+                
+                padding: 40px;
+                
+      }
+      
+      table{
+          background-color: white;
+          border-radius: 10px;
+         
+          margin: auto;
+      }
+      
+      #hl:hover{
+          background-color: #343A40;
+          color: white;
+      }
+      h2,p{
+          color: white;
+      }
+      .table{
+          width: 80%;
+          margin: auto;
+      }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="encap">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr id="exp">
+        <th>SCALE NO</th>
+        <th>B1</th>
+        <th>L1</th>
+        <th>B2</th>
+        <th>L2</th>
+        <th>B3</th>
+        <th>L3</th>
+        <th>B4</th>
+        <th>L4</th>
+        <th>Scale Name</th>
+        <th>L5</th>
+        <th>DETAIL</th>
+        <th>GRDPAY</th>
+        <th>PAYBAND</th>
+        <th>TA</th>
+        <th>Crud Op1</th>
+        <th>Crud Op2</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <td id="hl">{{ object.SCALE_NO }}</td>
+      <td id="hl">{{ object.B1 }}</td>
+      <td id="hl">{{ object.l1 }}</td>
+      <td id="hl">{{ object.B2 }}</td>
+      <td id="hl">{{ object.l2 }}</td>
+      <td id="hl">{{ object.B3 }}</td>
+      <td id="hl">{{ object.l3 }}</td>
+      <td id="hl">{{ object.B4 }}</td>
+      <td id="hl">{{ object.l4 }}</td>
+      <td id="hl">{{ object.SCALE_NAME }}</td>
+      <td id="hl">{{ object.l5 }}</td>
+      <td id="hl">{{ object.DETAIL }}</td>
+      <td id="hl">{{ object.GRDPAY }}</td>
+      <td id="hl">{{ object.PAYBAND }}</td>
+      <td id="hl">{{ object.TA }}</td>
+      <td id="hl"><a href="/{{object.SCALE_NO}}/update_scale" class="btn btn-primary btn-sm">Modify</a></td>
+      <td id="hl"><a href="/delete_scale/{{object.SCALE_NO}}" class="btn btn-primary btn-sm">Delete</a></td>
+      
+      {% endfor %} 
+    </tbody>
+  </table>
+    </div>
+</div>
+
+</body>
+</html>

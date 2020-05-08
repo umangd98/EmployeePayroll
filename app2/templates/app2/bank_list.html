@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+      .encap{
+                background-image: linear-gradient(to right, #0ED2F7, #A770EF);
+                min-height: 300px;
+
+                padding: 40px;
+
+      }
+
+      table{
+          background-color: white;
+          border-radius: 10px;
+
+          margin: auto;
+      }
+
+      #hl:hover{
+          background-color: #343A40;
+          color: white;
+      }
+      h2,p{
+          color: white;
+      }
+      .table{
+          width: 80%;
+          margin: auto;
+      }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="encap">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr id="exp">
+        <th>BSNAME</th>
+        <th>BNAME</th>
+        <th>LOCATION</th>
+        <th>BANKNO</th>
+        <th>Crud Op1</th>
+        <th>Crud Op2</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+      <td id="hl">{{ object.BSNAME }}</td>
+      <td id="hl">{{ object.BNAME }}</td>
+      <td id="hl">{{ object.LOCATION }}</td>
+      <td id="hl">{{ object.BANKNO}}</td>
+      <td id="hl"><a href="/{{object.BNO}}/update_bank" class="btn btn-primary btn-sm">Modify</a></td>
+      <td id="hl"><a href="/{{object.BNO}}/delete_bank" class="btn btn-primary btn-sm">Delete</a></td>
+    </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    </div>
+</div>
+
+</body>
+</html>

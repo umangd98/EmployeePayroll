@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Installment Show</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+      .encap{
+                /*background-image: linear-gradient(to right, #0ED2F7, #A770EF);
+                min-height: 300px;*/
+
+                padding: 40px;
+
+      }
+
+      table{
+          background-color: white;
+          border-radius: 10px;
+
+          margin: auto;
+      }
+
+      #hl:hover{
+          background-color: #343A40;
+          color: white;
+      }
+      h2,p{
+          color: white;
+      }
+      .table{
+          width: 80%;
+          margin: auto;
+      }
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="encap">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr id="exp">
+        <th>Installment NO</th>
+        <th>ID NO</th>
+        <th>PAY HEAD</th>
+        <th>MONTHLY AMOUNT</th>
+        <th>Installment NO</th>
+        <th>TOTAL Amount</th>
+        <th>REM</th>
+        <th>STOP</th>
+        <th>PAID NO</th>
+        <th>MONTH</th>
+        <th>NEW</th>
+        <th>REFERENCE NO</th>
+        <th>DESP NO</th>
+        <th>DEFA AMT</th>
+        <th>PRO_AMT</th>
+        <th>CODE</th>
+        <th>IBNO</th>
+        <th>MONYEAR</th>
+        <th>STOP1</th>
+        <th>BAL_AMT</th>
+        <th>REGULAR</th>
+        <th>LTNO</th>
+        <th>DESP_DT</th>
+        <th>START_DT</th>
+        <th>Crud op1</th>
+        <th>Crud op2</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for object in object_list %}
+        <td id="hl">{{object.INO}}</td>
+        <td id="hl">{{object.IDNO}}</td>
+        <td id="hl">{{object.PAYHEAD }}</td>
+        <td id="hl">{{object.MONAMT}}</td>
+        <td id="hl">{{object.INSTALNO }}</td>
+        <td id="hl">{{object.TOTAMT}}</td>
+        <td id="hl">{{object.REM}}</td>
+        <td id="hl">{{object.STOP}}</td>
+        <td id="hl">{{object.PAIDNO}}</td>
+        <td id="hl">{{object.MON }}</td>
+        <td id="hl">{{object.NEW }}</td>
+        <td id="hl">{{object.REF_NO}}</td>
+        <td id="hl">{{object.DESP_NO}}</td>
+        <td id="hl">{{object.DEFA_AMT}}</td>
+        <td id="hl">{{object.PRO_AMT}}</td>
+        <td id="hl">{{object.CODE}}</td>
+        <td id="hl">{{object.IBNO}}</td>
+        <td id="hl">{{object.MONYEAR}}</td>
+        <td id="hl">{{object.STOP1}}</td>
+        <td id="hl">{{object.BAL_AMT}}</td>
+        <td id="hl">{{object.REGULAR}}</td>
+        <td id="hl">{{object.LTNO}}</td>
+        <td id="hl">{{object.DESP_DT}}</td>
+        <td id="hl">{{object.START_DT}}</td>
+        <td id="hl"><a href="/{{object.INO}}/update_install" class="btn btn-primary btn-sm">Modify</a></td>
+        <td id="hl"><a href="{{object.INO}}/delete_install" class="btn btn-primary btn-sm">Delete</a></td>
+        {% endfor %}
+    </tbody>
+  </table>
+    </div>
+</div>
+
+</body>
+</html>
